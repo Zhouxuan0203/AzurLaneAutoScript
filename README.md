@@ -1,5 +1,5 @@
 **| [English](README_en.md) | Chinese |**
-test
+dev-test
 
 # AzurLaneAutoScript
 
