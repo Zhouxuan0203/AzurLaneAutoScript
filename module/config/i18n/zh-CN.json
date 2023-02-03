@@ -1948,7 +1948,7 @@
             "help": "",
             "max_exp": "经验值最多",
             "easiest": "战力最低",
-            "leftmost": "最左边",
+            "leftmost": "最左边test",
             "easiest_else_exp": "先最简单再经验最多",
             "max_ranking": "冲击排名"
         },
