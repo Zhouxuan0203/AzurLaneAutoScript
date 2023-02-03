@@ -497,7 +497,7 @@ def get_os_reset_remain():
 def get_server_next_update(daily_trigger):
     """
     Args:
-        daily_trigger (list[str], str): [ "00:00", "12:00", "18:00",]
+        daily_trigger (list[str], str): [ "02:00", "14:00", "20:00",]
 
     Returns:
         datetime.datetime
@@ -521,7 +521,7 @@ def get_server_next_update(daily_trigger):
 def get_server_last_update(daily_trigger):
     """
     Args:
-        daily_trigger (list[str], str): [ "00:00", "12:00", "18:00",]
+        daily_trigger (list[str], str): [ "02:00", "14:00", "20:00",]
 
     Returns:
         datetime.datetime
