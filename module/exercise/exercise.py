@@ -23,16 +23,14 @@ class Exercise(ExerciseCombat):
         self.ensure_no_info_bar(timeout=3)
 
     def _opponent_fleet_check_all(self):
-        if self.config.Exercise_OpponentChooseMode != 'leftmost' and self.config.Exercise_OpponentChooseMode != 'max_ranking':
+        if self.config.Exercise_OpponentChooseMode != 'leftmost':
             super()._opponent_fleet_check_all()
 
     def _opponent_sort(self, method=None):
         if method is None:
             method = self.config.Exercise_OpponentChooseMode
-        if method != 'leftmost' and method != 'max_ranking':
+        if method != 'leftmost':
             return super()._opponent_sort(method=method)
-        elif method == 'max_ranking':
-            return [0, 1]
         else:
             return [0, 1, 2, 3]
 
