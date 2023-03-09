@@ -526,13 +526,21 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
                 # Auto search can not handle siren searching device.
                 continue
 
-    def interrupt_auto_search(self, skip_first_screenshot=True):
+    def interrupt_auto_search(self, skip_first_screenshot=True, skip_first_screenshot=True):
         logger.info('Interrupting auto search')
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
+                if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
                 self.device.screenshot()
+
+            # End
+            if self.ui_page_appear(page_main):
+                logger.info('Auto search interrupted')
+                self.config.task_stop()
 
             # End
             if self.ui_page_appear(page_main):

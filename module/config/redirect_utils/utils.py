@@ -81,6 +81,54 @@ def emotion_mode_redirect(value):
             return 'calculate'
 
 
+def dossier_redirect(value):
+    """
+    OpsiDossierBeacon -> AttackMode
+    """
+    if value:
+        return 'current_dossier'
+    else:
+        return 'current'
+
+
+def enhance_favourite_redirect(value):
+    """
+    EnhanceFavourite -> ShipToEnhance
+    """
+    if value:
+        return 'all'
+    else:
+        return 'favourite'
+
+
+def enhance_check_redirect(value):
+    """
+    CheckPerCategory should be at least 5
+    """
+    if isinstance(value, int):
+        if value < 5:
+            return 5
+    return value
+
+
+def emotion_mode_redirect(value):
+    """
+    CalculateEmotion + IgnoreLowEmotionWarn -> Emotion.Mode
+    """
+    calculate, ignore = value
+    if calculate:
+        if ignore:
+            return 'calculate_ignore'
+        else:
+            return 'calculate'
+    else:
+        if ignore:
+            return 'ignore'
+        else:
+            # Invalid, fallback to calculate
+            return 'calculate'
+
+
 def change_ship_redirect(value):
     """
       FlagshipChange + FlagshipEquipChange -> ChangeFlagship

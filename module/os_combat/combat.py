@@ -238,6 +238,7 @@ class Combat(Combat_, MapEventHandler):
         logger.info('Auto Search combat execute')
         self.submarine_call_reset()
         self.device.click_record_clear()
+        self.device.click_record_clear()
         self.combat_auto_reset()
         self.combat_manual_reset()
         submarine_mode = 'do_not_use'
