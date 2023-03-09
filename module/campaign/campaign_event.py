@@ -47,6 +47,7 @@ class CampaignEvent(CampaignStatus):
         tasks = [
             'Event',
             'Event2',
+            'Event3',
             'EventA',
             'EventB',
             'EventC',
@@ -58,8 +59,10 @@ class CampaignEvent(CampaignStatus):
         ]
         command = self.config.Scheduler_Command
         if limit <= 0 or command not in tasks:
+            self.get_event_pt()
             return False
         if command == 'GemsFarming' and self.stage_is_main(self.config.Campaign_Name):
+            self.get_event_pt()
             return False
 
         pt = self.get_event_pt()
@@ -83,6 +86,7 @@ class CampaignEvent(CampaignStatus):
         tasks = [
             'Event',
             'Event2',
+            'Event3',
             'EventA',
             'EventB',
             'EventC',
@@ -115,30 +119,38 @@ class CampaignEvent(CampaignStatus):
         Pages:
             in: page_event or page_sp
         """
+        from module.config.utils import deep_get
         limit = self.config.TaskBalancer_CoinLimit
-        coin = self.get_coin()
+        coin = deep_get(self.config.data, 'Dashboard.Coin.Value')
+        logger.attr('Coin Count', coin)
         tasks = [
             'Event',
             'Event2',
+            'Event3',
             'Raid',
             'GemsFarming',
         ]
         command = self.config.Scheduler_Command
         # Check Coin
-        if coin < limit:
-            if command in tasks:
-                if self.config.Campaign_Event == 'campaign_main':
-                    return False
-                else:
-                    logger.hr('Triggered task balancer: Coin limit')
-                    return True
-        else:
+        if coin == 0:
+            # Avoid wrong/zero OCR result
+            logger.warning('Coin not found')
             return False
+        else:
+            if self.is_balancer_task():
+                if coin < limit:
+                    logger.hr('Reach Coin limit')
+                    return True
+                else:
+                    return False
+            else:
+                return False
 
     def handle_task_balancer(self):
         if self.config.TaskBalancer_Enable and self.triggered_task_balancer():
             self.config.task_delay(minute=5)
             next_task = self.config.TaskBalancer_TaskCall
+            logger.hr(f'TaskBalancer triggered, switching task to {next_task}')
             self.config.task_call(next_task)
             self.config.task_stop()
 
@@ -155,6 +167,7 @@ class CampaignEvent(CampaignStatus):
                 tasks = [
                     'Event',
                     'Event2',
+                    'Event3',
                     'EventA',
                     'EventB',
                     'EventC',

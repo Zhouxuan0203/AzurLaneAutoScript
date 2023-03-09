@@ -216,6 +216,30 @@ class Connection(ConnectionAttr):
             return result
 
     @cached_property
+    def cpu_abi(self) -> str:
+        """
+        Returns:
+            str: arm64-v8a, armeabi-v7a, x86, x86_64
+        """
+        abi = self.adb_shell(['getprop', 'ro.product.cpu.abi']).strip()
+        if not len(abi):
+            logger.error(f'CPU ABI invalid: "{abi}"')
+        return abi
+
+    @cached_property
+    def sdk_ver(self) -> int:
+        """
+        Android SDK/API levels, see https://apilevels.com/
+        """
+        sdk = self.adb_shell(['getprop', 'ro.build.version.sdk']).strip()
+        try:
+            return int(sdk)
+        except ValueError:
+            logger.error(f'SDK version invalid: {sdk}')
+
+        return 0
+
+    @cached_property
     def is_avd(self):
         if get_serial_pair(self.serial)[0] is None:
             return False
@@ -294,8 +318,7 @@ class Connection(ConnectionAttr):
         Returns:
             list[str]: ['nc'] or ['busybox', 'nc']
         """
-        sdk = self.adb_shell(['getprop', 'ro.build.version.sdk'])
-        sdk = int(sdk)
+        sdk = self.sdk_ver
         logger.info(f'sdk_ver: {sdk}')
         if sdk >= 28:
             # Android 9 emulators does not have `nc`, try `busybox nc`
@@ -473,17 +496,8 @@ class Connection(ConnectionAttr):
         Returns:
             bool: If success
         """
-        # Skip for emulator-5554
-        if 'emulator-' in serial:
-            logger.info(f'"{serial}" is a `emulator-*` serial, skip adb connect')
-            return True
-        if re.match(r'^[a-zA-Z0-9]+$', serial):
-            logger.info(f'"{serial}" seems to be a Android serial, skip adb connect')
-            return True
-
         # Disconnect offline device before connecting
-        device = self.list_device().select(serial=serial).first_or_none()
-        if device:
+        for device in self.list_device():
             if device.status == 'offline':
                 logger.warning(f'Device {serial} is offline, disconnect it before connecting')
                 self.adb_disconnect(serial)
@@ -492,7 +506,15 @@ class Connection(ConnectionAttr):
             elif device.status == 'device':
                 pass
             else:
-                logger.error(f'Device {serial} is is having a unknown status: {device.status}')
+                logger.warning(f'Device {serial} is is having a unknown status: {device.status}')
+
+        # Skip for emulator-5554
+        if 'emulator-' in serial:
+            logger.info(f'"{serial}" is a `emulator-*` serial, skip adb connect')
+            return True
+        if re.match(r'^[a-zA-Z0-9]+$', serial):
+            logger.info(f'"{serial}" seems to be a Android serial, skip adb connect')
+            return True
 
         # Try to connect
         for _ in range(3):

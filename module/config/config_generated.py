@@ -11,7 +11,7 @@ class GeneratedConfig:
 
     # Group `Scheduler`
     Scheduler_Enable = False
-    Scheduler_NextRun = datetime.datetime(2020, 1, 1, 0, 0)
+    Scheduler_NextRun = datetime.datetime(2023, 1, 1, 0, 0)
     Scheduler_Command = 'Alas'
     Scheduler_SuccessInterval = 0
     Scheduler_FailureInterval = 120
@@ -21,7 +21,7 @@ class GeneratedConfig:
     Emulator_Serial = 'auto'
     Emulator_PackageName = 'auto'  # auto, com.bilibili.azurlane, com.YoStarEN.AzurLane, com.YoStarJP.AzurLane, com.hkmanjuu.azurlane.gp, com.bilibili.blhx.huawei, com.bilibili.blhx.mi, com.tencent.tmgp.bilibili.blhx, com.bilibili.blhx.baidu, com.bilibili.blhx.qihoo, com.bilibili.blhx.nearme.gamecenter, com.bilibili.blhx.vivo, com.bilibili.blhx.mz, com.bilibili.blhx.uc, com.bilibili.blhx.mzw, com.yiwu.blhx.yx15, com.bilibili.blhx.m4399, com.hkmanjuu.azurlane.gp.mc
     Emulator_ServerName = 'disabled'  # disabled, cn_android-0, cn_android-1, cn_android-2, cn_android-3, cn_android-4, cn_android-5, cn_android-6, cn_android-7, cn_android-8, cn_android-9, cn_android-10, cn_android-11, cn_android-12, cn_android-13, cn_android-14, cn_android-15, cn_android-16, cn_android-17, cn_android-18, cn_android-19, cn_android-20, cn_android-21, cn_android-22, cn_ios-0, cn_ios-1, cn_ios-2, cn_ios-3, cn_ios-4, cn_ios-5, cn_ios-6, cn_ios-7, cn_ios-8, cn_ios-9, cn_ios-10, cn_channel-0, cn_channel-1, cn_channel-2, cn_channel-3, en-0, en-1, en-2, en-3, en-4, jp-0, jp-1, jp-2, jp-3, jp-4, jp-5, jp-6, jp-7, jp-8, jp-9, jp-10, jp-11, jp-12, jp-13, jp-14, jp-15, jp-16, jp-17
-    Emulator_ScreenshotMethod = 'ADB_nc'  # ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy
+    Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy
     Emulator_ControlMethod = 'minitouch'  # ADB, uiautomator2, minitouch, Hermit, MaaTouch
     Emulator_ScreenshotDedithering = False
     Emulator_AdbRestart = False
@@ -56,16 +56,23 @@ class GeneratedConfig:
     DropRecord_MeowfficerTalent = 'do_not'  # do_not, save, upload, save_and_upload
 
     # Group `Retirement`
-    Retirement_Enable = True
     Retirement_RetireMode = 'one_click_retire'  # one_click_retire, enhance, old_retire
-    Retirement_RetireAmount = 'retire_all'  # retire_all, retire_10
-    Retirement_EnhanceFavourite = False
-    Retirement_EnhanceFilter = None
-    Retirement_EnhanceCheckPerCategory = 2
-    Retirement_OldRetireN = True
-    Retirement_OldRetireR = True
-    Retirement_OldRetireSR = False
-    Retirement_OldRetireSSR = False
+
+    # Group `OneClickRetire`
+    OneClickRetire_KeepLimitBreak = 'keep_limit_break'  # keep_limit_break, do_not_keep
+    OneClickRetire_RetireAmount = 'retire_all'  # retire_all, retire_10
+
+    # Group `Enhance`
+    Enhance_ShipToEnhance = 'all'  # all, favourite
+    Enhance_Filter = None
+    Enhance_CheckPerCategory = 5
+
+    # Group `OldRetire`
+    OldRetire_N = True
+    OldRetire_R = True
+    OldRetire_SR = False
+    OldRetire_SSR = False
+    OldRetire_RetireAmount = 'retire_all'  # retire_all, retire_10
 
     # Group `Campaign`
     Campaign_Name = '12-4'
@@ -103,15 +110,14 @@ class GeneratedConfig:
     Submarine_DistanceToBoss = '2_grid_to_boss'  # to_boss_position, 1_grid_to_boss, 2_grid_to_boss, use_open_ocean_support
 
     # Group `Emotion`
-    Emotion_CalculateEmotion = True
-    Emotion_IgnoreLowEmotionWarn = False
+    Emotion_Mode = 'calculate'  # calculate, ignore, calculate_ignore
     Emotion_Fleet1Value = 119
-    Emotion_Fleet1Record = datetime.datetime(2020, 1, 1, 0, 0)
+    Emotion_Fleet1Record = datetime.datetime(2023, 1, 1, 0, 0)
     Emotion_Fleet1Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
     Emotion_Fleet1Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
     Emotion_Fleet1Oath = False
     Emotion_Fleet2Value = 119
-    Emotion_Fleet2Record = datetime.datetime(2020, 1, 1, 0, 0)
+    Emotion_Fleet2Record = datetime.datetime(2023, 1, 1, 0, 0)
     Emotion_Fleet2Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
     Emotion_Fleet2Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
     Emotion_Fleet2Oath = False
@@ -144,17 +150,17 @@ class GeneratedConfig:
     C124LargeLeveling_PickupAmmo = 3  # 3, 4, 5
 
     # Group `GemsFarming`
-    GemsFarming_FlagshipChange = True
-    GemsFarming_FlagshipEquipChange = False
-    GemsFarming_VanguardChange = False
-    GemsFarming_VanguardEquipChange = False
-    GemsFarming_LowEmotionRetreat = True
+    GemsFarming_ChangeFlagship = 'ship'  # ship, ship_equip
+    GemsFarming_ChangeVanguard = 'ship'  # ship, ship_equip
+    GemsFarming_ALLowLowVanguardLevel = True
+    GemsFarming_FleetNumberInHardMode = 0  # 0, 1, 2
+    GemsFarming_StopIFAutoNotEnsured = True
     GemsFarming_CommonCV = 'any'  # any, langley, bogue, ranger, hermes
     GemsFarming_CommissionLimit = True
 
     # Group `EventGeneral`
     EventGeneral_PtLimit = 0
-    EventGeneral_TimeLimit = datetime.datetime(2020, 1, 1, 0, 0)
+    EventGeneral_TimeLimit = datetime.datetime(2023, 1, 1, 0, 0)
 
     # Group `TaskBalancer`
     TaskBalancer_Enable = False
@@ -281,11 +287,13 @@ class GeneratedConfig:
     ShipyardDr_ResearchSeries = 2  # 2
     ShipyardDr_ShipIndex = 0  # 0, 1, 2, 3, 4, 5, 6
     ShipyardDr_BuyAmount = 2
+    ShipyardDr_LastRun = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `Shipyard`
     Shipyard_ResearchSeries = 1  # 1, 2, 3
     Shipyard_ShipIndex = 0  # 0, 1, 2, 3, 4, 5, 6
     Shipyard_BuyAmount = 2
+    Shipyard_LastRun = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `Gacha`
     Gacha_Pool = 'light'  # light, heavy, special, event, wishing_well
@@ -307,6 +315,7 @@ class GeneratedConfig:
 
     # Group `SupplyPack`
     SupplyPack_Collect = True
+    SupplyPack_DayOfWeek = 0  # 0, 1, 2, 3, 4, 5, 6
 
     # Group `Daily`
     Daily_UseDailySkip = True
@@ -327,13 +336,15 @@ class GeneratedConfig:
     Hard_HardFleet = 1  # 1, 2
 
     # Group `Exercise`
+    Exercise_DelayUntilHoursBeforeNextUpdate = 12  # 1, 2, 3, 4, 5, 12
     Exercise_OpponentChooseMode = 'max_exp'  # max_exp, easiest, leftmost, easiest_else_exp
     Exercise_OpponentTrial = 1
     Exercise_ExercisePreserve = 0
+    Exercise_EmptyOnceOnSecondFriday = False
     Exercise_LowHpThreshold = 0.4
     Exercise_LowHpConfirmWait = 0.1
     Exercise_OpponentRefreshValue = 0
-    Exercise_OpponentRefreshRecord = datetime.datetime(2020, 1, 1, 0, 0)
+    Exercise_OpponentRefreshRecord = datetime.datetime(2023, 1, 1, 0, 0)
 
     # Group `Sos`
     Sos_Chapter = 3  # 3, 4, 5, 6, 7, 8, 9, 10
@@ -350,19 +361,17 @@ class GeneratedConfig:
     OpsiGeneral_AkashiShopFilter = 'ActionPoint > PurpleCoins'
 
     # Group `OpsiAshBeacon`
-    OpsiAshBeacon_AshAttack = True
+    OpsiAshBeacon_AttackMode = 'current'  # current, current_dossier
     OpsiAshBeacon_OneHitMode = True
     OpsiAshBeacon_RequestAssist = True
     OpsiAshBeacon_EnsureFullyCollected = True
-
-    # Group `OpsiDossierBeacon`
-    OpsiDossierBeacon_Enable = True
 
     # Group `OpsiFleetFilter`
     OpsiFleetFilter_Filter = 'Fleet-4 > CallSubmarine > Fleet-2 > Fleet-3 > Fleet-1'
 
     # Group `OpsiFleet`
     OpsiFleet_Fleet = 1  # 1, 2, 3, 4
+    OpsiFleet_FleetMode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
     OpsiFleet_Submarine = False
 
     # Group `OpsiExplore`
@@ -418,6 +427,86 @@ class GeneratedConfig:
 
     # Group `GameManager`
     GameManager_AutoRestart = True
+
+    # Group `GGHandler`
+    GGHandler_Enabled = False
+    GGHandler_ServerLocation = 'cn'  # cn, jp, en, tw
+    GGHandler_GGMethod = 'u2'  # screenshot, u2
+    GGHandler_GGPanelConfirmTime = 5
+    GGHandler_RestartATX = False
+    GGHandler_GGPackageName = 'com.'
+    GGHandler_AutoRestartGG = False
+    GGHandler_RestartEverytime = True
+    GGHandler_GGMultiplyingFactor = 200
+    GGHandler_DisabledTask = 'disable_all_dangerous_task'  # disable_all_dangerous_task, disable_guild_and_dangerous, disable_exercise, enable_all
+
+    # Group `PowerLimit`
+    PowerLimit_Exercise = 16500
+    PowerLimit_Raid = 16500
+    PowerLimit_Ash = 16500
+
+    # Group `Oil`
+    Oil_Value = 0
+    Oil_Limit = 0
+    Oil_Color = '^000000'
+    Oil_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Coin`
+    Coin_Value = 0
+    Coin_Limit = 0
+    Coin_Color = '^000000'
+    Coin_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Gem`
+    Gem_Value = 0
+    Gem_Color = '^000000'
+    Gem_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Pt`
+    Pt_Value = 0
+    Pt_Color = '^000000'
+    Pt_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `YellowCoin`
+    YellowCoin_Value = 0
+    YellowCoin_Color = '^000000'
+    YellowCoin_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `PurpleCoin`
+    PurpleCoin_Value = 0
+    PurpleCoin_Color = '^000000'
+    PurpleCoin_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `ActionPoint`
+    ActionPoint_Value = 0
+    ActionPoint_Total = 0
+    ActionPoint_Color = '^000000'
+    ActionPoint_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Merit`
+    Merit_Value = 0
+    Merit_Color = '^000000'
+    Merit_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Cube`
+    Cube_Value = 0
+    Cube_Color = '^000000'
+    Cube_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Core`
+    Core_Value = 0
+    Core_Color = '^000000'
+    Core_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `Medal`
+    Medal_Value = 0
+    Medal_Color = '^000000'
+    Medal_Record = datetime.datetime(2020, 1, 1, 0, 0)
+
+    # Group `GuildCoin`
+    GuildCoin_Value = 0
+    GuildCoin_Color = '^000000'
+    GuildCoin_Record = datetime.datetime(2020, 1, 1, 0, 0)
 
     # Group `Storage`
     Storage_Storage = {}

@@ -20,10 +20,6 @@
       "name": "Reward",
       "help": ""
     },
-    "DailyReward": {
-      "name": "Daily Reward",
-      "help": ""
-    },
     "DailyMission": {
       "name": "Daily Mission",
       "help": ""
@@ -66,6 +62,10 @@
       "name": "Commission Farming",
       "help": ""
     },
+    "Sos": {
+      "name": "SOS",
+      "help": ""
+    },
     "EventGeneral": {
       "name": "Event General",
       "help": ""
@@ -77,6 +77,10 @@
     "Event2": {
       "name": "Event-2",
       "help": ""
+    },
+    "Event3": {
+      "name": "Task.Event3.name",
+      "help": "Task.Event3.help"
     },
     "EventA": {
       "name": "Event Daily A",
@@ -97,6 +101,10 @@
     "EventSp": {
       "name": "Event Daily SP",
       "help": ""
+    },
+    "WarArchives": {
+      "name": "War Archives",
+      "help": "Due to the lack of maintenance of war archives, continuous clear may not work normally, if Alas runs abnormally, Please manually finish clearing and use auto search"
     },
     "Raid": {
       "name": "Raid",
@@ -138,6 +146,18 @@
       "name": "Reward",
       "help": ""
     },
+    "Daily": {
+      "name": "Daily",
+      "help": ""
+    },
+    "Hard": {
+      "name": "Hard",
+      "help": ""
+    },
+    "Exercise": {
+      "name": "Exercise",
+      "help": ""
+    },
     "ShopFrequent": {
       "name": "Shop Frequent",
       "help": ""
@@ -156,26 +176,6 @@
     },
     "Freebies": {
       "name": "Freebies",
-      "help": ""
-    },
-    "Daily": {
-      "name": "Daily",
-      "help": ""
-    },
-    "Hard": {
-      "name": "Hard",
-      "help": ""
-    },
-    "Exercise": {
-      "name": "Exercise",
-      "help": ""
-    },
-    "Sos": {
-      "name": "SOS",
-      "help": ""
-    },
-    "WarArchives": {
-      "name": "War Archives",
       "help": ""
     },
     "OpsiGeneral": {
@@ -216,7 +216,7 @@
     },
     "OpsiArchive": {
       "name": "Archive Zones",
-      "help": "Clear archive zones. Archive zones are AP free.\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Clear archive zones. Archive zones are AP free.\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "OpsiStronghold": {
       "name": "Siren Strongholds",
@@ -296,7 +296,7 @@
     },
     "Serial": {
       "name": "Serial",
-      "help": "Use \"auto\" to auto-detect emulators, but serial must be filled if multiple emulators are running\nDefault serial for select emulators:\n- BlueStacks 127.0.0.1:5555\n- BlueStacks4 Hyper-V use \"bluestacks4-hyperv\", \"bluestacks4-hyperv-2\" for multi instance, and so on\n- BlueStacks5 Hyper-V use \"bluestacks5-hyperv\", \"bluestacks5-hyperv-1\" for multi instance, and so on\n- NoxPlayer 127.0.0.1:62001\n- NoxPlayer64bit 127.0.0.1:59865\n- MuMuPlayer 127.0.0.1:7555\n- MemuPlayer 127.0.0.1:21503\n- LDPlayer emulator-5554 or 127.0.0.1:5555\n- WSA use \"wsa-0\" to make the game run in the background, which needs to be controlled or closed by third-party software\nIf there are multiple emulator instances running, the default is reserved for one of them and the others will use different serials to avoid conflicts\nOpen console.bat and run `adb devices` to find what they are"
+      "help": "Common emulator Serial can be queried in the list below\nUse \"auto\" to auto-detect emulators, but if multiple emulators are running or use emulators that do not support auto-detect, \"auto\" cannot be used and serial must be filled in manually\nDefault serial for select emulators:\n- BlueStacks 127.0.0.1:5555\n- BlueStacks4 Hyper-V use \"bluestacks4-hyperv\", \"bluestacks4-hyperv-2\" for multi instance, and so on\n- BlueStacks5 Hyper-V use \"bluestacks5-hyperv\", \"bluestacks5-hyperv-1\" for multi instance, and so on\n- NoxPlayer 127.0.0.1:62001\n- NoxPlayer64bit 127.0.0.1:59865\n- MuMuPlayer/MuMuPlayer X 127.0.0.1:7555\n- MemuPlayer 127.0.0.1:21503\n- LDPlayer emulator-5554 or 127.0.0.1:5555\n- WSA use \"wsa-0\" to make the game run in the background, which needs to be controlled or closed by third-party software\nIf there are multiple emulator instances running, the default is reserved for one of them and the others will use different serials to avoid conflicts\nOpen console.bat and run `adb devices` to find them or follow the emulator's official tutorial"
     },
     "PackageName": {
       "name": "Game Server",
@@ -388,7 +388,8 @@
     },
     "ScreenshotMethod": {
       "name": "Screenshot Method",
-      "help": "Speed: aScreenCap_nc > ADB_nc >>> aScreenCap > uiautomator2 ~= ADB\nRun Tools - Performance Test to find the fastest method",
+      "help": "When using auto-select, a benchmark will be performed and automatically changed to the fastest screenshot method.\nGeneral speed: DroidCast_raw >> aScreenCap_nc > ADB_nc >>> aScreenCap > uiautomator2 ~= ADB.\nRun Tools - Performance Test to find the fastest method.",
+      "auto": "Auto-select the fastest",
       "ADB": "ADB ",
       "ADB_nc": "ADB_nc",
       "uiautomator2": "uiautomator2",
@@ -555,50 +556,78 @@
       "name": "Retirement Settings",
       "help": ""
     },
-    "Enable": {
-      "name": "Enable Retirement",
-      "help": ""
-    },
     "RetireMode": {
       "name": "Retirement Mode",
       "help": "If mode is one click retire, in game retire settings are enforced\nIf mode is enhance but unable to do so, will fallback to one click retire as default",
-      "one_click_retire": "one_click_retire",
-      "enhance": "enhance",
-      "old_retire": "old_retire"
+      "one_click_retire": "One-click Retire",
+      "enhance": "Enhance",
+      "old_retire": "Old Retire"
+    }
+  },
+  "OneClickRetire": {
+    "_info": {
+      "name": "One-click Retire Settings",
+      "help": "Only applies to \"One-click Retire\""
+    },
+    "KeepLimitBreak": {
+      "name": "Keep Copies of Max LB Ships",
+      "help": "If you own multiple copies of a ship that has not been fully Limit Broken, this option determines what you want to do with those copies.\nIf one-click retire cannot retire ships, please set to \"Don't Keep\"",
+      "keep_limit_break": "Keep Enough to Max LB",
+      "do_not_keep": "Don't Keep"
     },
     "RetireAmount": {
-      "name": "Amount to Retire",
+      "name": "Retire Amount",
       "help": "",
-      "retire_all": "retire_all",
-      "retire_10": "retire_10"
+      "retire_all": "Retire All",
+      "retire_10": "Retire 10"
+    }
+  },
+  "Enhance": {
+    "_info": {
+      "name": "Enhance Settings",
+      "help": "Only applies to \"Enhance\""
     },
-    "EnhanceFavourite": {
-      "name": "Use Favorite Filter for Enhance",
-      "help": ""
+    "ShipToEnhance": {
+      "name": "Ship to Enhance",
+      "help": "",
+      "all": "Enhance All Ships",
+      "favourite": "Enhance Favourite Ships Only"
     },
-    "EnhanceFilter": {
+    "Filter": {
       "name": "Ship Type(s) Filter for Enhance",
       "help": "\"cv > bb > ...\"; may substitute a type with \"?\" to have Alas select a type at random\nMust enter at least 1 whitespace character to disable type filtering"
     },
-    "EnhanceCheckPerCategory": {
+    "CheckPerCategory": {
       "name": "Number Checked Per Category for Enhance",
       "help": "Restricts the number of ships to be checked per category before moving onto the next if any\nSuitable enhance material is checked continously until reaching the unenhanceable state (in battle or stat full), after which this number is decremented for the current session\nRecommend to configure 3+ if there are non-max level ships in active fleet else <= 2 is generally sufficient"
+    }
+  },
+  "OldRetire": {
+    "_info": {
+      "name": "Old Retire Settings",
+      "help": "Only applies to \"Old Retire\".\nNote that old retire is based on rarity, it will retire Bulins"
     },
-    "OldRetireN": {
+    "N": {
       "name": "Retire Common",
-      "help": "Only applies to old retire mode"
+      "help": ""
     },
-    "OldRetireR": {
+    "R": {
       "name": "Retire Rare",
-      "help": "Only applies to old retire mode"
+      "help": ""
     },
-    "OldRetireSR": {
+    "SR": {
       "name": "Retire Elite",
-      "help": "Only applies to old retire mode"
+      "help": ""
     },
-    "OldRetireSSR": {
+    "SSR": {
       "name": "Retire Super Rare",
-      "help": "Only applies to old retire mode"
+      "help": ""
+    },
+    "RetireAmount": {
+      "name": "Retire Amount",
+      "help": "",
+      "retire_all": "Retire All",
+      "retire_10": "Retire 10"
     }
   },
   "Campaign": {
@@ -614,6 +643,10 @@
       "name": "Event Name",
       "help": "Automatically selects to the latest event",
       "campaign_main": "campaign_main",
+      "event_20210422_cn": "Daedalian Hymn",
+      "event_20230223_cn": "Revelations of Dust",
+      "event_20220224_cn": "Abyssal Refrain",
+      "event_20200806_cn": "The Enigma and the Shark Rerun",
       "raid_20220127": "Mystery Investigation",
       "raid_20230118": "Winter Pathfinder",
       "event_20210610_tw": "復刻夜幕下的歸途",
@@ -645,16 +678,13 @@
       "event_20220428_cn": "Rondo at Rainbows End",
       "event_20220414_cn": "Aurora Noctis Rerun",
       "event_20220407_tw": "蒼紅的迴響(復刻)",
-      "event_20210422_cn": "Daedalian Hymn",
       "event_20220310_tw": "復刻斯圖爾特的硝煙",
       "event_20200603_cn": "Counterattack Within the Fjord Rerun",
-      "event_20220224_cn": "Abyssal Refrain",
       "event_20220210_cn": "Northern Overture Rerun",
       "event_20211125_cn": "World-spanning Arclight",
       "event_20211028_tw": "復刻光與影的鳶尾之華",
       "event_20210722_cn": "Azur Anthem",
       "event_20210819_cn": "Microlayer Medley Rerun",
-      "event_20200806_cn": "The Enigma and the Shark Rerun",
       "event_20200723_cn": "Aurora Noctis",
       "event_20210624_cn": "Swirling Cherry Blossoms Rerun",
       "event_20210624_tw": "穹頂下的聖詠曲",
@@ -878,13 +908,12 @@
       "name": "Emotion Settings",
       "help": "At least one or both \"Calculate Emotion Consumption\" and \"Ignore Low Emotion Warning\" is used for these settings to be enabled"
     },
-    "CalculateEmotion": {
-      "name": "Calculate Emotion Consumption",
-      "help": "Calculates emotion according to settings, if ship(s) have changed in fleet should manually edit the corresponding value for accuracy"
-    },
-    "IgnoreLowEmotionWarn": {
-      "name": "Ignore Low Emotion Warning",
-      "help": "If emotion warning triggers, it will be ignored and proceed into next battle regardless"
+    "Mode": {
+      "name": "Emotion Settings",
+      "help": "",
+      "calculate": "Calculate Emotion Consumption",
+      "ignore": "Ignore Low Emotion Warning",
+      "calculate_ignore": "Calculate + Ignore"
     },
     "Fleet1Value": {
       "name": "Fleet 1 Emotion Value",
@@ -1059,25 +1088,32 @@
       "name": "Commission Farming Settings",
       "help": "Warning: This task allows players to get a small amount of gems, but not an efficient way to farm.\nPlayers who have recently started Azur Lane are easily superstitious about 0LB and low oil consumption, while being ignorant about character leveling.\nRunning this function will only make you feel fulfilled however in reality your account will not actually progress very much.\nThe main purpose of this task is to get extra cubes for players with a formed lineup. Please rationally treat gems as a by-product.\n\nFleet 1 is expected to consist of 1 0LB CV/CVL and 1 0LB Vanguard, Fleet 2 is expected to consist of support ships such as New Jersey or Shinano to provide external battle assistance.\nFor information about the drop mechanism/rate of urgent commissions, you can refer to <https://bbs.nga.cn/read.php?tid=27134956> (in Chinese Simplified)"
     },
-    "FlagshipChange": {
-      "name": "Enable Flagship Change",
-      "help": "Switch out to new common CV/CVL whose level is in range of 1 to 32, after current has reached level 32+.\nMeanwhile, abandoned flagships will be retired. Any common CV/CVL whose level is 2+ will be regarded as targets.\nDo confirm that your own ships which is not a target has been locked"
+    "ChangeFlagship": {
+      "name": "Change Flagship",
+      "help": "Change flagship if flagship level >= 33 or emotion exhausted.\nSwitch out to new common CV/CVL whose level is in range of 1 to 32, after current has reached level 32+. Meanwhile, abandoned flagships will be retired. Any common CV/CVL whose level is 2+ will be regarded as targets. Do confirm that your own ships which is not a target has been locked\n\nThe flagship's equipment is replaced when being switched out by first recording the current setup\\nOnly populated equipment slots will be replaced. If the CV/CVL preference has been configured, all 5 slots will be populated otherwise only the auxiliary slots will be populated.",
+      "ship": "Change Ship",
+      "ship_equip": "Change Ship + Gears"
     },
-    "FlagshipEquipChange": {
-      "name": "Enable Flagship Equipment Change",
-      "help": "The flagship's equipment is replaced when being switched out by first recording the current setup\nOnly populated equipment slots will be replaced\nIf the CV/CVL preference has been configured, all 5 slots will be populated otherwise only the auxiliary slots will be populated"
+    "ChangeVanguard": {
+      "name": "Change Vanguard",
+      "help": "Change vanguard if emotion exhausted.\nSwitch out to new level 100(70) common vanguard after current flagship has reached level 32+ (Only CN players'0 limit break ship can reach level 100)\n\nThe vanguard's equipment is replaced when being switched out by first recording the current setup. Only populated equipment slots will be replaced.",
+      "ship": "Change Ship",
+      "ship_equip": "Change Ship + Gears"
     },
-    "VanguardChange": {
-      "name": "Enable Vanguard Change",
-      "help": "Switch out to new level 100(70) common vanguard after current flagship has reached level 32+\n(Only CN players'0 limit break ship can reach level 100)"
+    "ALLowLowVanguardLevel": {
+      "name": "ALLow Low Vanguard Level",
+      "help": "Destroyers over level 10 will now be used, 49 for Event CD"
     },
-    "VanguardEquipChange": {
-      "name": "Enable Vanguard Equipment Change",
-      "help": "The vanguard's equipment is replaced when being switched out by first recording the current setup\nOnly populated equipment slots will be replaced"
+    "FleetNumberInHardMode": {
+      "name": "Fleet number used in hard mode",
+      "help": "Fleet number used in hard mode like Event C/D",
+      "0": "Not a hard mode",
+      "1": "Fleet 1",
+      "2": "Fleet 2"
     },
-    "LowEmotionRetreat": {
-      "name": "Enable Low Emotion Retreat",
-      "help": "Retreat when low emotion is detected and switch out both back and front ships at the same time"
+    "StopIFAutoNotEnsured": {
+      "name": "GemsFarming.StopIFAutoNotEnsured.name",
+      "help": "GemsFarming.StopIFAutoNotEnsured.help"
     },
     "CommonCV": {
       "name": "Flagship Common CV/CVL Preference",
@@ -1697,6 +1733,10 @@
     "BuyAmount": {
       "name": "Buy Amount",
       "help": "The 1st and 2nd purchase everyday are free\nDiscounts are applied to the 3rd and onwards, gradually minimizing until full price\nExact discounts found at <https://azurlane.koumakan.jp/Research#Strengthening>"
+    },
+    "LastRun": {
+      "name": "Last Purchase Time",
+      "help": "Because AL does not display how many blueprints have been purchased today, the time of the last purchase is recorded here to prevent the task from running repeatedly. This value is automatically recorded and generally does not need to be modified."
     }
   },
   "Shipyard": {
@@ -1725,6 +1765,10 @@
     "BuyAmount": {
       "name": "Buy Amount",
       "help": "The 1st and 2nd purchase everyday are free\nDiscounts are applied to the 3rd and onwards, gradually minimizing until full price\nExact discounts found at <https://azurlane.koumakan.jp/Research#Strengthening>"
+    },
+    "LastRun": {
+      "name": "Last Purchase Time",
+      "help": "Because AL does not display how many blueprints have been purchased today, the time of the last purchase is recorded here to prevent the task from running repeatedly. This value is automatically recorded and generally does not need to be modified."
     }
   },
   "Gacha": {
@@ -1814,6 +1858,17 @@
     "Collect": {
       "name": "Collect Weekly Free Supply Pack",
       "help": ""
+    },
+    "DayOfWeek": {
+      "name": "Days of the week",
+      "help": "Alas will delay free supply pack buying until the value\nIt is recommended to set it to weekdays, or alas may miss the purchase",
+      "0": "Monday",
+      "1": "Tuesday",
+      "2": "Wednesday",
+      "3": "Thursday",
+      "4": "Friday",
+      "5": "Saturday",
+      "6": "Sunday"
     }
   },
   "Daily": {
@@ -1944,6 +1999,16 @@
       "name": "Exercise Settings",
       "help": "Runs exercise and automatically retreats when sum HP volume is low"
     },
+    "DelayUntilHoursBeforeNextUpdate": {
+      "name": "Exercise.DelayUntilHoursBeforeNextUpdate.name",
+      "help": "Exercise.DelayUntilHoursBeforeNextUpdate.help",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "12": "12"
+    },
     "OpponentChooseMode": {
       "name": "Opponent Choose Mode",
       "help": "",
@@ -1959,6 +2024,10 @@
     "ExercisePreserve": {
       "name": "Keep X Number Remain(s)",
       "help": "1 ~ 10\n1 means run until 1/10"
+    },
+    "EmptyOnceOnSecondFriday": {
+      "name": "Exercise.EmptyOnceOnSecondFriday.name",
+      "help": "Exercise.EmptyOnceOnSecondFriday.help"
     },
     "LowHpThreshold": {
       "name": "Low HP Threshold",
@@ -2046,31 +2115,23 @@
       "name": "Ash Beacon Settings",
       "help": ""
     },
-    "AshAttack": {
-      "name": "Enable Ash Attack",
-      "help": "When data beacon is full; attack until ash has been completed"
+    "AttackMode": {
+      "name": "META Attack",
+      "help": "",
+      "current": "Current",
+      "current_dossier": "Current + Dossier"
     },
     "OneHitMode": {
       "name": "One Hit Mode",
-      "help": "Strike each beacon only once, then call for support every half hour thereafter\nNot effective in dossier beacons"
+      "help": "Strike each beacon only once, then call for support every half hour thereafter\nNot effective in META dossiers"
     },
     "RequestAssist": {
       "name": "Request Assists",
-      "help": "Before the attack, request assists from friends, guild and world"
+      "help": "Before the attack, request assists from friends, guild and world\nNot effective in META dossiers"
     },
     "EnsureFullyCollected": {
       "name": "Ensure 200 Beacon Data Fully Collected",
       "help": "Ignore AP limit setting temporarily before ash beacon fully collected. \"Meowfficer Farming\" must be enabled"
-    }
-  },
-  "OpsiDossierBeacon": {
-    "_info": {
-      "name": "Dossier Beacon Settings",
-      "help": ""
-    },
-    "Enable": {
-      "name": "Enable Dossier Beacon Attack",
-      "help": ""
     }
   },
   "OpsiFleetFilter": {
@@ -2096,6 +2157,14 @@
       "3": "3",
       "4": "4"
     },
+    "FleetMode": {
+      "name": "Fleet Mode",
+      "help": "",
+      "combat_auto": "combat_auto",
+      "combat_manual": "combat_manual",
+      "stand_still_in_the_middle": "stand_still_in_the_middle",
+      "hide_in_bottom_left": "hide_in_bottom_left"
+    },
     "Submarine": {
       "name": "Call Submarine",
       "help": "If enabled, interval increases from 30 to 60 minutes instead"
@@ -2104,7 +2173,7 @@
   "OpsiExplore": {
     "_info": {
       "name": "OpSi Explore Settings",
-      "help": "At the beginning of each month OpSi is reset\nThe following must be satisfied:\n- OpSi story must be complete\nEach zone will be visited in a clockwise direction every 27 minutes until world has been been completely opened\nNo need to consume 5000 oil for special radar in OpSi voucher shop"
+      "help": "At the beginning of each month OpSi is reset\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\nEach zone will be visited in a clockwise direction every 27 minutes until world has been been completely opened\nNo need to consume 5000 oil for special radar in OpSi voucher shop"
     },
     "SpecialRadar": {
       "name": "SpecialRadar Bought",
@@ -2122,7 +2191,7 @@
   "OpsiShop": {
     "_info": {
       "name": "OpSi Shop Settings",
-      "help": "Completes OpSi daily activities\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Completes OpSi daily activities\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "BuySupply": {
       "name": "Buy From Port Shops",
@@ -2132,7 +2201,7 @@
   "OpsiVoucher": {
     "_info": {
       "name": "OpSi Voucher Settings",
-      "help": "Buy monthly items from the OpSi voucher shop\nThe following must be satisfied:\n- OpSi story must be complete"
+      "help": "Buy monthly items from the OpSi voucher shop\nThe following must be satisfied:\n- OpSi story and practice battles must be complete"
     },
     "Filter": {
       "name": "Item Filter",
@@ -2142,7 +2211,7 @@
   "OpsiDaily": {
     "_info": {
       "name": "OpSi Daily Settings",
-      "help": "Completes OpSi daily activities\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Completes OpSi daily activities\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "DoMission": {
       "name": "Do Port Mission(s)",
@@ -2156,7 +2225,7 @@
   "OpsiObscure": {
     "_info": {
       "name": "OpSi Obscure Settings",
-      "help": "Clear obscure zones every 27 minutes\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Clear obscure zones every 27 minutes\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "ForceRun": {
       "name": "Force Run",
@@ -2166,7 +2235,7 @@
   "OpsiAbyssal": {
     "_info": {
       "name": "OpSi Abyssal Settings",
-      "help": "Clear abyssal zones\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Clear abyssal zones\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "ForceRun": {
       "name": "Force Run",
@@ -2176,7 +2245,7 @@
   "OpsiStronghold": {
     "_info": {
       "name": "OpSi Siren Stronghold Settings",
-      "help": "Clear the weekly siren strongholds\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Clear the weekly siren strongholds\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "ForceRun": {
       "name": "Force Run",
@@ -2186,7 +2255,7 @@
   "OpsiMonthBoss": {
     "_info": {
       "name": "Monthly Boss",
-      "help": "To clear (normal/hard) monthly bosses, the following conditions must be met to use this function:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop\nIf failed on normal boss, attack until cleared; if failed on hard boss, stop task directly"
+      "help": "To clear (normal/hard) monthly bosses, the following conditions must be met to use this function:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop\nIf failed on normal boss, attack until cleared; if failed on hard boss, stop task directly"
     },
     "Mode": {
       "name": "Difficulty of clearing monthly bosses",
@@ -2206,7 +2275,7 @@
   "OpsiMeowfficerFarming": {
     "_info": {
       "name": "OpSi Meowfficer Farm Settings",
-      "help": "Attack target zones of the specified hazard level in a clockwise direction\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
+      "help": "Attack target zones of the specified hazard level in a clockwise direction\nThe following must be satisfied:\n- OpSi story and practice battles must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "ActionPointPreserve": {
       "name": "Keep X Amount of AP",
@@ -2229,11 +2298,11 @@
   "OpsiHazard1Leveling": {
     "_info": {
       "name": "CL1 leveling",
-      "help": "Warning: CL1 cannot gain unlimited action point. Please do not close other tasks in order to run CL1.\n\nAccording to the latest statistics of LmeSzinc, the action point output of CL1 is slightly higher than that of consumption, and you can gain a lot of experience while consuming operation coins in exchange for meowfficer farming.\nIt is recommended to carry 1 pre-loaded CV to obtain the highest average hourly experience benefit.\nSince buying action point in the store requires a large number of operation coins, this task will automatically enable meowfficer farming to supplement."
+      "help": "Consume operation coins to gain a lot of experience and a little action points.\nRecommended to carry 1-2 pre-loaded CV to obtain the highest average hourly benefit.\n\nTo avoid being unable to buying goods from port shops, Alas will retain 100,000 operation coins\nSince buying action points at the mystery shop requires a large number of operation points, this function will be supplemented by running meowfficer farming with overflow action points."
     },
     "TargetZone": {
       "name": "Target Zone ID",
-      "help": "Only attack target zone, which can be used to obtain world achievement stars or avoid the event that the map cannot be refreshed due to game bug",
+      "help": "Only attack target zone, which can be used to avoid the event that the map cannot be refreshed due to game bug",
       "0": "No Specification",
       "44": "44 | West Continental Shelf D",
       "22": "22 | NA Ocean SW Sector B"
@@ -2307,6 +2376,308 @@
       "help": "Log back into the game when the game has been ended."
     }
   },
+  "GGHandler": {
+    "_info": {
+      "name": "GG Handler",
+      "help": ""
+    },
+    "Enabled": {
+      "name": "Enabled",
+      "help": ""
+    },
+    "ServerLocation": {
+      "name": "Server location",
+      "help": "",
+      "cn": "CN",
+      "jp": "JP",
+      "en": "EN",
+      "tw": "TW"
+    },
+    "GGMethod": {
+      "name": "Control Method",
+      "help": "Screenshot is slow and has some bugs, only for environments that not support UiAutomator",
+      "screenshot": "Screenshot",
+      "u2": "UiAutomator"
+    },
+    "GGPanelConfirmTime": {
+      "name": "GGHandler.GGPanelConfirmTime.name",
+      "help": "GGHandler.GGPanelConfirmTime.help"
+    },
+    "RestartATX": {
+      "name": "GGHandler.RestartATX.name",
+      "help": "GGHandler.RestartATX.help"
+    },
+    "GGPackageName": {
+      "name": "GG Package Name",
+      "help": "In /Android/data/com.xxxxxxx. (xxxxxxx means a lot of random characters)"
+    },
+    "AutoRestartGG": {
+      "name": "Auto Restart GG",
+      "help": "Start GG before tasks"
+    },
+    "RestartEverytime": {
+      "name": "Restart Everytime Alas starts",
+      "help": "For sake of safety"
+    },
+    "GGMultiplyingFactor": {
+      "name": "GG Multiplying Factor",
+      "help": "1 - 9999 Recommended"
+    },
+    "DisabledTask": {
+      "name": "Disabled Tasks",
+      "help": "",
+      "disable_all_dangerous_task": "Disable_all_dangerous_task",
+      "disable_guild_and_dangerous": "disable_guild_and_dangerous",
+      "disable_exercise": "Disable_exercise",
+      "enable_all": "Enable_all"
+    }
+  },
+  "PowerLimit": {
+    "_info": {
+      "name": "Power Limit",
+      "help": "Power over this will cause a restart and enable GG in config"
+    },
+    "Exercise": {
+      "name": "Exercise",
+      "help": ""
+    },
+    "Raid": {
+      "name": "Raid",
+      "help": ""
+    },
+    "Ash": {
+      "name": "Ash",
+      "help": ""
+    }
+  },
+  "Oil": {
+    "_info": {
+      "name": "Oil._info.name",
+      "help": "Oil._info.help"
+    },
+    "Value": {
+      "name": "Oil.Value.name",
+      "help": "Oil.Value.help"
+    },
+    "Limit": {
+      "name": "Oil.Limit.name",
+      "help": "Oil.Limit.help"
+    },
+    "Color": {
+      "name": "Oil.Color.name",
+      "help": "Oil.Color.help"
+    },
+    "Record": {
+      "name": "Oil.Record.name",
+      "help": "Oil.Record.help"
+    }
+  },
+  "Coin": {
+    "_info": {
+      "name": "Coin._info.name",
+      "help": "Coin._info.help"
+    },
+    "Value": {
+      "name": "Coin.Value.name",
+      "help": "Coin.Value.help"
+    },
+    "Limit": {
+      "name": "Coin.Limit.name",
+      "help": "Coin.Limit.help"
+    },
+    "Color": {
+      "name": "Coin.Color.name",
+      "help": "Coin.Color.help"
+    },
+    "Record": {
+      "name": "Coin.Record.name",
+      "help": "Coin.Record.help"
+    }
+  },
+  "Gem": {
+    "_info": {
+      "name": "Gem._info.name",
+      "help": "Gem._info.help"
+    },
+    "Value": {
+      "name": "Gem.Value.name",
+      "help": "Gem.Value.help"
+    },
+    "Color": {
+      "name": "Gem.Color.name",
+      "help": "Gem.Color.help"
+    },
+    "Record": {
+      "name": "Gem.Record.name",
+      "help": "Gem.Record.help"
+    }
+  },
+  "Pt": {
+    "_info": {
+      "name": "Pt._info.name",
+      "help": "Pt._info.help"
+    },
+    "Value": {
+      "name": "Pt.Value.name",
+      "help": "Pt.Value.help"
+    },
+    "Color": {
+      "name": "Pt.Color.name",
+      "help": "Pt.Color.help"
+    },
+    "Record": {
+      "name": "Pt.Record.name",
+      "help": "Pt.Record.help"
+    }
+  },
+  "YellowCoin": {
+    "_info": {
+      "name": "YellowCoin._info.name",
+      "help": "YellowCoin._info.help"
+    },
+    "Value": {
+      "name": "YellowCoin.Value.name",
+      "help": "YellowCoin.Value.help"
+    },
+    "Color": {
+      "name": "YellowCoin.Color.name",
+      "help": "YellowCoin.Color.help"
+    },
+    "Record": {
+      "name": "YellowCoin.Record.name",
+      "help": "YellowCoin.Record.help"
+    }
+  },
+  "PurpleCoin": {
+    "_info": {
+      "name": "PurpleCoin._info.name",
+      "help": "PurpleCoin._info.help"
+    },
+    "Value": {
+      "name": "PurpleCoin.Value.name",
+      "help": "PurpleCoin.Value.help"
+    },
+    "Color": {
+      "name": "PurpleCoin.Color.name",
+      "help": "PurpleCoin.Color.help"
+    },
+    "Record": {
+      "name": "PurpleCoin.Record.name",
+      "help": "PurpleCoin.Record.help"
+    }
+  },
+  "ActionPoint": {
+    "_info": {
+      "name": "ActionPoint._info.name",
+      "help": "ActionPoint._info.help"
+    },
+    "Value": {
+      "name": "ActionPoint.Value.name",
+      "help": "ActionPoint.Value.help"
+    },
+    "Total": {
+      "name": "ActionPoint.Total.name",
+      "help": "ActionPoint.Total.help"
+    },
+    "Color": {
+      "name": "ActionPoint.Color.name",
+      "help": "ActionPoint.Color.help"
+    },
+    "Record": {
+      "name": "ActionPoint.Record.name",
+      "help": "ActionPoint.Record.help"
+    }
+  },
+  "Merit": {
+    "_info": {
+      "name": "Merit._info.name",
+      "help": "Merit._info.help"
+    },
+    "Value": {
+      "name": "Merit.Value.name",
+      "help": "Merit.Value.help"
+    },
+    "Color": {
+      "name": "Merit.Color.name",
+      "help": "Merit.Color.help"
+    },
+    "Record": {
+      "name": "Merit.Record.name",
+      "help": "Merit.Record.help"
+    }
+  },
+  "Cube": {
+    "_info": {
+      "name": "Cube._info.name",
+      "help": "Cube._info.help"
+    },
+    "Value": {
+      "name": "Cube.Value.name",
+      "help": "Cube.Value.help"
+    },
+    "Color": {
+      "name": "Cube.Color.name",
+      "help": "Cube.Color.help"
+    },
+    "Record": {
+      "name": "Cube.Record.name",
+      "help": "Cube.Record.help"
+    }
+  },
+  "Core": {
+    "_info": {
+      "name": "Core._info.name",
+      "help": "Core._info.help"
+    },
+    "Value": {
+      "name": "Core.Value.name",
+      "help": "Core.Value.help"
+    },
+    "Color": {
+      "name": "Core.Color.name",
+      "help": "Core.Color.help"
+    },
+    "Record": {
+      "name": "Core.Record.name",
+      "help": "Core.Record.help"
+    }
+  },
+  "Medal": {
+    "_info": {
+      "name": "Medal._info.name",
+      "help": "Medal._info.help"
+    },
+    "Value": {
+      "name": "Medal.Value.name",
+      "help": "Medal.Value.help"
+    },
+    "Color": {
+      "name": "Medal.Color.name",
+      "help": "Medal.Color.help"
+    },
+    "Record": {
+      "name": "Medal.Record.name",
+      "help": "Medal.Record.help"
+    }
+  },
+  "GuildCoin": {
+    "_info": {
+      "name": "GuildCoin._info.name",
+      "help": "GuildCoin._info.help"
+    },
+    "Value": {
+      "name": "GuildCoin.Value.name",
+      "help": "GuildCoin.Value.help"
+    },
+    "Color": {
+      "name": "GuildCoin.Color.name",
+      "help": "GuildCoin.Color.help"
+    },
+    "Record": {
+      "name": "GuildCoin.Record.name",
+      "help": "GuildCoin.Record.help"
+    }
+  },
   "Storage": {
     "_info": {
       "name": "Task status",
@@ -2330,6 +2701,8 @@
       "Stop": "Stop",
       "ScrollON": "Auto Scroll ON",
       "ScrollOFF": "Auto Scroll OFF",
+      "DashboardON": "Fold",
+      "DashboardOFF": "Unfold",
       "ClearLog": "Clear Log",
       "Setting": "Setting",
       "CheckUpdate": "Check update",
@@ -2362,6 +2735,26 @@
     },
     "Overview": {
       "Scheduler": "Scheduler",
+      "Dashboard": "Gui.Overview.Dashboard",
+      "SecondsAgo": "Seconds ago",
+      "MinutesAgo": "Minutes ago",
+      "HoursAgo": "Hours ago",
+      "DaysAgo": "Days ago",
+      "MonthsAgo": "Months ago",
+      "YearsAgo": "Years ago",
+      "NoData": "No data",
+      "Oil": "Oil",
+      "Coin": "Coin",
+      "Gem": "Gem",
+      "Cube": "Cube",
+      "Pt": "Event Pt",
+      "YellowCoin": "Operation Supply Coin",
+      "PurpleCoin": "Special Item Token",
+      "ActionPoint": "Action Point",
+      "Merit": "Merit",
+      "Medal": "Medal",
+      "Core": "Core Data",
+      "GuildCoin": "Guild Coin",
       "Log": "Log",
       "Running": "Running",
       "Pending": "Pending",

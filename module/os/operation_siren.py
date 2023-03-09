@@ -244,7 +244,10 @@ class OperationSiren(OSMap):
             OpsiFleet_Fleet=self.config.cross_get('OpsiMeowfficerFarming.OpsiFleet.Fleet'),
             OpsiFleet_Submarine=False,
             OpsiMeowfficerFarming_ActionPointPreserve=0,
-            OpsiMeowfficerFarming_HazardLevel=3,
+            OpsiMeowfficerFarming_HazardLevel=
+            self.config.cross_get('OpsiMeowfficerFarming'
+                                  '.OpsiMeowfficerFarming'
+                                  '.HazardLevel'),
             OpsiMeowfficerFarming_TargetZone=0,
         )
         while 1:
@@ -317,7 +320,7 @@ class OperationSiren(OSMap):
         ap_checked = False
         while 1:
             self.config.OS_ACTION_POINT_PRESERVE = preserve
-            if self.config.OpsiAshBeacon_AshAttack \
+            if self.config.is_task_enabled('OpsiAshBeacon') \
                     and not self._ash_fully_collected \
                     and self.config.OpsiAshBeacon_EnsureFullyCollected:
                 logger.info('Ash beacon not fully collected, ignore action point limit temporarily')
@@ -376,12 +379,12 @@ class OperationSiren(OSMap):
             OpsiGeneral_DoRandomMapEvent=True,
             OpsiGeneral_AkashiShopFilter='ActionPoint',
         )
-        if not self.config.cross_get(keys='OpsiMeowfficerFarming.Scheduler.Enable', default=False):
+        if not self.config.is_task_enabled('OpsiMeowfficerFarming'):
             self.config.cross_set(keys='OpsiMeowfficerFarming.Scheduler.Enable', value=True)
         while 1:
             # Limited action point preserve of hazard 1 to 200
             self.config.OS_ACTION_POINT_PRESERVE = 200
-            if self.config.OpsiAshBeacon_AshAttack \
+            if self.config.is_task_enabled('OpsiAshBeacon') \
                     and not self._ash_fully_collected \
                     and self.config.OpsiAshBeacon_EnsureFullyCollected:
                 logger.info('Ash beacon not fully collected, ignore action point limit temporarily')
@@ -769,8 +772,12 @@ class OperationSiren(OSMap):
             ActionPointLimit
             TaskEnd: if no more month boss
         """
-        logger.hr("OS clear Month Boss", level=1)
+        if self.is_in_opsi_explore():
+            logger.info('OpsiExplore is under scheduling, stop OpsiMonthBoss')
+            self.config.task_delay(server_update=True)
+            self.config.task_stop()
 
+        logger.hr("OS clear Month Boss", level=1)
         logger.hr("Month Boss precheck", level=2)
         self.os_mission_enter()
         logger.attr('OpsiMonthBoss.Mode', self.config.OpsiMonthBoss_Mode)
@@ -783,7 +790,7 @@ class OperationSiren(OSMap):
         else:
             logger.info("No Normal/Hard boss found, stop")
             self.os_mission_quit()
-            self.month_boss_delay(is_normal=False, result=True)
+            self.month_boss_delay(is_normal=False, result=False)
             return True
         self.os_mission_quit()
 
@@ -842,7 +849,8 @@ class OperationSiren(OSMap):
                 self.config.task_delay(target=next_reset)
                 self.config.task_stop()
             else:
-                logger.info("Unable to clear the hard monthly boss, task stop")
+                logger.info("Unable to clear the hard monthly boss, try again on tomorrow")
+                self.config.task_delay(server_update=True)
                 self.config.task_stop()
 
 

@@ -18,6 +18,7 @@ from module.map.assets import *
 from module.ui.assets import *
 from module.ui.page import MAIN_CHECK
 from module.ui.ui import UI
+from module.gg_handler.gg_handler import GGHandler
 
 
 class LoginHandler(UI):
@@ -28,11 +29,10 @@ class LoginHandler(UI):
             out: page_main
         """
         logger.hr('App login')
-
+        GGHandler(config=self.config, device=self.device).handle_restart()
         confirm_timer = Timer(1.5, count=4).start()
         orientation_timer = Timer(5)
         login_success = False
-
         while 1:
             # Watch device rotation
             if not login_success and orientation_timer.reached():
@@ -85,7 +85,7 @@ class LoginHandler(UI):
             # Always goto page_main
             if self.appear_then_click(GOTO_MAIN, offset=(30, 30), interval=5):
                 continue
-
+        
         return True
 
     _user_agreement_timer = Timer(1, count=2)
@@ -139,7 +139,7 @@ class LoginHandler(UI):
 
         logger.critical('Login failed more than 3')
         logger.critical('Azur Lane server may be under maintenance, or you may lost network connection')
-        raise RequestHumanTakeover
+        raise GameStuckError
 
     def app_stop(self):
         logger.hr('App stop')
@@ -147,17 +147,18 @@ class LoginHandler(UI):
 
     def app_start(self):
         logger.hr('App start')
+        GGHandler(config=self.config, device=self.device).handle_before_restart()
         self.device.app_start()
         self.handle_app_login()
         # self.ensure_no_unfinished_campaign()
 
     def app_restart(self):
         logger.hr('App restart')
+        GGHandler(config=self.config, device=self.device).handle_before_restart()
         self.device.app_stop()
         self.device.app_start()
         self.handle_app_login()
         # self.ensure_no_unfinished_campaign()
-        self.config.task_delay(server_update=True)
 
     def ensure_no_unfinished_campaign(self, confirm_wait=3):
         """

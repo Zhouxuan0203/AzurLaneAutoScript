@@ -1,262 +1,262 @@
 {
   "Menu": {
     "Task": {
-      "name": "Menu.Task.name",
-      "help": "Menu.Task.help"
+      "name": "",
+      "help": ""
     },
     "Alas": {
-      "name": "Menu.Alas.name",
-      "help": "Menu.Alas.help"
+      "name": "Alas",
+      "help": ""
     },
     "Farm": {
-      "name": "Menu.Farm.name",
-      "help": "Menu.Farm.help"
+      "name": "出撃",
+      "help": ""
     },
     "Event": {
-      "name": "Menu.Event.name",
-      "help": "Menu.Event.help"
+      "name": "イベント",
+      "help": ""
     },
     "Reward": {
-      "name": "Menu.Reward.name",
-      "help": "Menu.Reward.help"
-    },
-    "DailyReward": {
-      "name": "Menu.DailyReward.name",
-      "help": "Menu.DailyReward.help"
+      "name": "収穫",
+      "help": ""
     },
     "DailyMission": {
-      "name": "Menu.DailyMission.name",
-      "help": "Menu.DailyMission.help"
+      "name": "日課任務",
+      "help": ""
     },
     "Opsi": {
-      "name": "Menu.Opsi.name",
-      "help": "Menu.Opsi.help"
+      "name": "セイレーン作戦",
+      "help": ""
     },
     "Tool": {
-      "name": "Menu.Tool.name",
-      "help": "Menu.Tool.help"
+      "name": "ツール",
+      "help": ""
     }
   },
   "Task": {
     "Alas": {
-      "name": "Task.Alas.name",
-      "help": "Task.Alas.help"
+      "name": "Alas設定",
+      "help": ""
     },
     "General": {
-      "name": "Task.General.name",
-      "help": "Task.General.help"
+      "name": "通用設定",
+      "help": ""
     },
     "Restart": {
-      "name": "Task.Restart.name",
-      "help": "Task.Restart.help"
+      "name": "再起動設定",
+      "help": ""
     },
     "Main": {
-      "name": "Task.Main.name",
-      "help": "Task.Main.help"
+      "name": "メイン海域",
+      "help": ""
     },
     "Main2": {
-      "name": "Task.Main2.name",
-      "help": "Task.Main2.help"
+      "name": "メイン海域-2",
+      "help": ""
     },
     "Main3": {
-      "name": "Task.Main3.name",
-      "help": "Task.Main3.help"
+      "name": "メイン海域-3",
+      "help": ""
     },
     "GemsFarming": {
-      "name": "Task.GemsFarming.name",
-      "help": "Task.GemsFarming.help"
-    },
-    "EventGeneral": {
-      "name": "Task.EventGeneral.name",
-      "help": "Task.EventGeneral.help"
-    },
-    "Event": {
-      "name": "Task.Event.name",
-      "help": "Task.Event.help"
-    },
-    "Event2": {
-      "name": "Task.Event2.name",
-      "help": "Task.Event2.help"
-    },
-    "EventA": {
-      "name": "Task.EventA.name",
-      "help": "Task.EventA.help"
-    },
-    "EventB": {
-      "name": "Task.EventB.name",
-      "help": "Task.EventB.help"
-    },
-    "EventC": {
-      "name": "Task.EventC.name",
-      "help": "Task.EventC.help"
-    },
-    "EventD": {
-      "name": "Task.EventD.name",
-      "help": "Task.EventD.help"
-    },
-    "EventSp": {
-      "name": "Task.EventSp.name",
-      "help": "Task.EventSp.help"
-    },
-    "Raid": {
-      "name": "Task.Raid.name",
-      "help": "Task.Raid.help"
-    },
-    "RaidDaily": {
-      "name": "Task.RaidDaily.name",
-      "help": "Task.RaidDaily.help"
-    },
-    "MaritimeEscort": {
-      "name": "Task.MaritimeEscort.name",
-      "help": "Task.MaritimeEscort.help"
-    },
-    "Commission": {
-      "name": "Task.Commission.name",
-      "help": "Task.Commission.help"
-    },
-    "Tactical": {
-      "name": "Task.Tactical.name",
-      "help": "Task.Tactical.help"
-    },
-    "Research": {
-      "name": "Task.Research.name",
-      "help": "Task.Research.help"
-    },
-    "Dorm": {
-      "name": "Task.Dorm.name",
-      "help": "Task.Dorm.help"
-    },
-    "Meowfficer": {
-      "name": "Task.Meowfficer.name",
-      "help": "Task.Meowfficer.help"
-    },
-    "Guild": {
-      "name": "Task.Guild.name",
-      "help": "Task.Guild.help"
-    },
-    "Reward": {
-      "name": "Task.Reward.name",
-      "help": "Task.Reward.help"
-    },
-    "ShopFrequent": {
-      "name": "Task.ShopFrequent.name",
-      "help": "Task.ShopFrequent.help"
-    },
-    "ShopOnce": {
-      "name": "Task.ShopOnce.name",
-      "help": "Task.ShopOnce.help"
-    },
-    "Shipyard": {
-      "name": "Task.Shipyard.name",
-      "help": "Task.Shipyard.help"
-    },
-    "Gacha": {
-      "name": "Task.Gacha.name",
-      "help": "Task.Gacha.help"
-    },
-    "Freebies": {
-      "name": "Task.Freebies.name",
-      "help": "Task.Freebies.help"
-    },
-    "Daily": {
-      "name": "Task.Daily.name",
-      "help": "Task.Daily.help"
-    },
-    "Hard": {
-      "name": "Task.Hard.name",
-      "help": "Task.Hard.help"
-    },
-    "Exercise": {
-      "name": "Task.Exercise.name",
-      "help": "Task.Exercise.help"
+      "name": "Commission Farming",
+      "help": ""
     },
     "Sos": {
-      "name": "Task.Sos.name",
-      "help": "Task.Sos.help"
+      "name": "Sos",
+      "help": ""
+    },
+    "EventGeneral": {
+      "name": "イベント共通設定",
+      "help": ""
+    },
+    "Event": {
+      "name": "イベント海域",
+      "help": ""
+    },
+    "Event2": {
+      "name": "イベント海域-2",
+      "help": ""
+    },
+    "Event3": {
+      "name": "Task.Event3.name",
+      "help": "Task.Event3.help"
+    },
+    "EventA": {
+      "name": "毎日イベント海域A",
+      "help": ""
+    },
+    "EventB": {
+      "name": "毎日イベント海域B",
+      "help": ""
+    },
+    "EventC": {
+      "name": "毎日イベント海域C",
+      "help": ""
+    },
+    "EventD": {
+      "name": "毎日イベント海域D",
+      "help": ""
+    },
+    "EventSp": {
+      "name": "毎日イベント海域SP",
+      "help": ""
     },
     "WarArchives": {
-      "name": "Task.WarArchives.name",
-      "help": "Task.WarArchives.help"
+      "name": "作戦履歴",
+      "help": ""
+    },
+    "Raid": {
+      "name": "Raid",
+      "help": ""
+    },
+    "RaidDaily": {
+      "name": "Raid Daily",
+      "help": ""
+    },
+    "MaritimeEscort": {
+      "name": "Maritime Escort",
+      "help": ""
+    },
+    "Commission": {
+      "name": "委託",
+      "help": ""
+    },
+    "Tactical": {
+      "name": "戦術教室",
+      "help": ""
+    },
+    "Research": {
+      "name": "研究",
+      "help": ""
+    },
+    "Dorm": {
+      "name": "寮舎",
+      "help": ""
+    },
+    "Meowfficer": {
+      "name": "オフニャ",
+      "help": ""
+    },
+    "Guild": {
+      "name": "大艦隊",
+      "help": ""
+    },
+    "Reward": {
+      "name": "収穫",
+      "help": ""
+    },
+    "Daily": {
+      "name": "デイリー",
+      "help": ""
+    },
+    "Hard": {
+      "name": "ハード海域",
+      "help": ""
+    },
+    "Exercise": {
+      "name": "演習",
+      "help": ""
+    },
+    "ShopFrequent": {
+      "name": "一般ショップ",
+      "help": ""
+    },
+    "ShopOnce": {
+      "name": "他ショップ",
+      "help": ""
+    },
+    "Shipyard": {
+      "name": "開発ドック",
+      "help": ""
+    },
+    "Gacha": {
+      "name": "毎日建造",
+      "help": ""
+    },
+    "Freebies": {
+      "name": "他ギフト",
+      "help": ""
     },
     "OpsiGeneral": {
-      "name": "Task.OpsiGeneral.name",
-      "help": "Task.OpsiGeneral.help"
+      "name": "一般設定",
+      "help": ""
     },
     "OpsiAshBeacon": {
-      "name": "Task.OpsiAshBeacon.name",
-      "help": "Task.OpsiAshBeacon.help"
+      "name": "Ash Beacon",
+      "help": ""
     },
     "OpsiAshAssist": {
-      "name": "Task.OpsiAshAssist.name",
-      "help": "Task.OpsiAshAssist.help"
+      "name": "OpSi Ash Assist",
+      "help": ""
     },
     "OpsiExplore": {
-      "name": "Task.OpsiExplore.name",
-      "help": "Task.OpsiExplore.help"
+      "name": "OpSi Explore",
+      "help": ""
     },
     "OpsiShop": {
-      "name": "Task.OpsiShop.name",
-      "help": "Task.OpsiShop.help"
+      "name": "OpSi Shop",
+      "help": ""
     },
     "OpsiVoucher": {
-      "name": "Task.OpsiVoucher.name",
-      "help": "Task.OpsiVoucher.help"
+      "name": "OpSi Voucher",
+      "help": ""
     },
     "OpsiDaily": {
-      "name": "Task.OpsiDaily.name",
-      "help": "Task.OpsiDaily.help"
+      "name": "OpSi Daily",
+      "help": ""
     },
     "OpsiObscure": {
-      "name": "Task.OpsiObscure.name",
-      "help": "Task.OpsiObscure.help"
+      "name": "Obscure Zones",
+      "help": ""
     },
     "OpsiAbyssal": {
-      "name": "Task.OpsiAbyssal.name",
-      "help": "Task.OpsiAbyssal.help"
+      "name": "Abyssal Zones",
+      "help": ""
     },
     "OpsiArchive": {
-      "name": "Task.OpsiArchive.name",
-      "help": "Task.OpsiArchive.help"
+      "name": "Archive Zones",
+      "help": "Clear archive zones. Archive zones are AP free.\nThe following must be satisfied:\n- OpSi story must be complete\n- Task OpSi Explore enabled or consuming 5000 oil for special radar in OpSi voucher shop"
     },
     "OpsiStronghold": {
-      "name": "Task.OpsiStronghold.name",
-      "help": "Task.OpsiStronghold.help"
+      "name": "Siren Strongholds",
+      "help": ""
     },
     "OpsiMonthBoss": {
-      "name": "Task.OpsiMonthBoss.name",
-      "help": "Task.OpsiMonthBoss.help"
+      "name": "Monthly Boss",
+      "help": "To clear (easy/difficult) monthly bosses, the following conditions must be met to use this function:\n- Clear the main task of the big world\n- Enable the Great World Land Reclamation Mission or use the Battle Information Recorder (5000 oil props)\nIf the easy difficulty fails, the attack will be repeated according to the submarine settings; if the difficult difficulty fails, the mission will be terminated directly"
     },
     "OpsiMeowfficerFarming": {
-      "name": "Task.OpsiMeowfficerFarming.name",
-      "help": "Task.OpsiMeowfficerFarming.help"
+      "name": "Meowfficer Farming",
+      "help": ""
     },
     "OpsiHazard1Leveling": {
-      "name": "Task.OpsiHazard1Leveling.name",
-      "help": "Task.OpsiHazard1Leveling.help"
+      "name": "CL1 Leveling",
+      "help": ""
     },
     "OpsiCrossMonth": {
-      "name": "Task.OpsiCrossMonth.name",
-      "help": "Task.OpsiCrossMonth.help"
+      "name": "Cross Month Daily",
+      "help": "    ALAS will enter OpSi 10min before OpSi reset, wait until OpSi reset but not exit OpSi. Then do the daily, obscure, abyssal and meowfficer farming to get extra gold plates. When running dailies, settings in task \"OpSiDaily\" are used, the rest function are the same.\n    IMPORTANT: Please do not touch the game while ALAS is waiting for OpSi reset."
     },
     "Daemon": {
-      "name": "Task.Daemon.name",
-      "help": "Task.Daemon.help"
+      "name": "半自動クリック",
+      "help": ""
     },
     "OpsiDaemon": {
-      "name": "Task.OpsiDaemon.name",
-      "help": "Task.OpsiDaemon.help"
+      "name": "セイレーン作戦半自動",
+      "help": ""
     },
     "Benchmark": {
-      "name": "Task.Benchmark.name",
-      "help": "Task.Benchmark.help"
+      "name": "機能テスト",
+      "help": ""
     },
     "AzurLaneUncensored": {
-      "name": "Task.AzurLaneUncensored.name",
-      "help": "Task.AzurLaneUncensored.help"
+      "name": "中国サーバー規制解除",
+      "help": ""
     },
     "GameManager": {
-      "name": "Task.GameManager.name",
-      "help": "Task.GameManager.help"
+      "name": "Game Manager(WIP)",
+      "help": ""
     }
   },
   "Scheduler": {
@@ -389,6 +389,7 @@
     "ScreenshotMethod": {
       "name": "Emulator.ScreenshotMethod.name",
       "help": "Emulator.ScreenshotMethod.help",
+      "auto": "auto",
       "ADB": "ADB",
       "ADB_nc": "ADB_nc",
       "uiautomator2": "uiautomator2",
@@ -555,50 +556,78 @@
       "name": "Retirement._info.name",
       "help": "Retirement._info.help"
     },
-    "Enable": {
-      "name": "Retirement.Enable.name",
-      "help": "Retirement.Enable.help"
-    },
     "RetireMode": {
       "name": "Retirement.RetireMode.name",
       "help": "Retirement.RetireMode.help",
       "one_click_retire": "one_click_retire",
       "enhance": "enhance",
       "old_retire": "old_retire"
+    }
+  },
+  "OneClickRetire": {
+    "_info": {
+      "name": "OneClickRetire._info.name",
+      "help": "OneClickRetire._info.help"
+    },
+    "KeepLimitBreak": {
+      "name": "OneClickRetire.KeepLimitBreak.name",
+      "help": "OneClickRetire.KeepLimitBreak.help",
+      "keep_limit_break": "keep_limit_break",
+      "do_not_keep": "do_not_keep"
     },
     "RetireAmount": {
-      "name": "Retirement.RetireAmount.name",
-      "help": "Retirement.RetireAmount.help",
+      "name": "OneClickRetire.RetireAmount.name",
+      "help": "OneClickRetire.RetireAmount.help",
       "retire_all": "retire_all",
       "retire_10": "retire_10"
+    }
+  },
+  "Enhance": {
+    "_info": {
+      "name": "Enhance._info.name",
+      "help": "Enhance._info.help"
     },
-    "EnhanceFavourite": {
-      "name": "Retirement.EnhanceFavourite.name",
-      "help": "Retirement.EnhanceFavourite.help"
+    "ShipToEnhance": {
+      "name": "Enhance.ShipToEnhance.name",
+      "help": "Enhance.ShipToEnhance.help",
+      "all": "all",
+      "favourite": "favourite"
     },
-    "EnhanceFilter": {
-      "name": "Retirement.EnhanceFilter.name",
-      "help": "Retirement.EnhanceFilter.help"
+    "Filter": {
+      "name": "Enhance.Filter.name",
+      "help": "Enhance.Filter.help"
     },
-    "EnhanceCheckPerCategory": {
-      "name": "Retirement.EnhanceCheckPerCategory.name",
-      "help": "Retirement.EnhanceCheckPerCategory.help"
+    "CheckPerCategory": {
+      "name": "Enhance.CheckPerCategory.name",
+      "help": "Enhance.CheckPerCategory.help"
+    }
+  },
+  "OldRetire": {
+    "_info": {
+      "name": "OldRetire._info.name",
+      "help": "OldRetire._info.help"
     },
-    "OldRetireN": {
-      "name": "Retirement.OldRetireN.name",
-      "help": "Retirement.OldRetireN.help"
+    "N": {
+      "name": "OldRetire.N.name",
+      "help": "OldRetire.N.help"
     },
-    "OldRetireR": {
-      "name": "Retirement.OldRetireR.name",
-      "help": "Retirement.OldRetireR.help"
+    "R": {
+      "name": "OldRetire.R.name",
+      "help": "OldRetire.R.help"
     },
-    "OldRetireSR": {
-      "name": "Retirement.OldRetireSR.name",
-      "help": "Retirement.OldRetireSR.help"
+    "SR": {
+      "name": "OldRetire.SR.name",
+      "help": "OldRetire.SR.help"
     },
-    "OldRetireSSR": {
-      "name": "Retirement.OldRetireSSR.name",
-      "help": "Retirement.OldRetireSSR.help"
+    "SSR": {
+      "name": "OldRetire.SSR.name",
+      "help": "OldRetire.SSR.help"
+    },
+    "RetireAmount": {
+      "name": "OldRetire.RetireAmount.name",
+      "help": "OldRetire.RetireAmount.help",
+      "retire_all": "retire_all",
+      "retire_10": "retire_10"
     }
   },
   "Campaign": {
@@ -614,6 +643,10 @@
       "name": "Campaign.Event.name",
       "help": "Campaign.Event.help",
       "campaign_main": "campaign_main",
+      "event_20210422_cn": "讃える復興の迷路",
+      "event_20230223_cn": "黙示の遺構",
+      "event_20220224_cn": "鳴動せし星霜の淵",
+      "event_20200806_cn": "鉄血鮫とエニグマ（復刻）",
       "raid_20220127": "秘密事件調査",
       "raid_20230118": "冬の案内人",
       "event_20210610_tw": "復刻夜幕下的歸途",
@@ -645,16 +678,13 @@
       "event_20220428_cn": "吟ずる瑠璃の楽章",
       "event_20220414_cn": "極夜照らす幻光（復刻）",
       "event_20220407_tw": "蒼紅的迴響(復刻)",
-      "event_20210422_cn": "讃える復興の迷路",
       "event_20220310_tw": "復刻斯圖爾特的硝煙",
       "event_20200603_cn": "峡湾間の反撃（復刻）",
-      "event_20220224_cn": "鳴動せし星霜の淵",
       "event_20220210_cn": "凍絶の北海（復刻）",
       "event_20211125_cn": "弧光は交わる世界にて",
       "event_20211028_tw": "復刻光與影的鳶尾之華",
       "event_20210722_cn": "海に響くアイドルの歌",
       "event_20210819_cn": "闇靄払う銀翼（復刻）",
-      "event_20200806_cn": "鉄血鮫とエニグマ（復刻）",
       "event_20200723_cn": "極夜照らす幻光",
       "event_20210624_cn": "翳りし満ちる影の華(復刻)",
       "event_20210624_tw": "穹頂下的聖詠曲",
@@ -878,13 +908,12 @@
       "name": "Emotion._info.name",
       "help": "Emotion._info.help"
     },
-    "CalculateEmotion": {
-      "name": "Emotion.CalculateEmotion.name",
-      "help": "Emotion.CalculateEmotion.help"
-    },
-    "IgnoreLowEmotionWarn": {
-      "name": "Emotion.IgnoreLowEmotionWarn.name",
-      "help": "Emotion.IgnoreLowEmotionWarn.help"
+    "Mode": {
+      "name": "Emotion.Mode.name",
+      "help": "Emotion.Mode.help",
+      "calculate": "calculate",
+      "ignore": "ignore",
+      "calculate_ignore": "calculate_ignore"
     },
     "Fleet1Value": {
       "name": "Emotion.Fleet1Value.name",
@@ -1059,25 +1088,32 @@
       "name": "GemsFarming._info.name",
       "help": "GemsFarming._info.help"
     },
-    "FlagshipChange": {
-      "name": "GemsFarming.FlagshipChange.name",
-      "help": "GemsFarming.FlagshipChange.help"
+    "ChangeFlagship": {
+      "name": "GemsFarming.ChangeFlagship.name",
+      "help": "GemsFarming.ChangeFlagship.help",
+      "ship": "ship",
+      "ship_equip": "ship_equip"
     },
-    "FlagshipEquipChange": {
-      "name": "GemsFarming.FlagshipEquipChange.name",
-      "help": "GemsFarming.FlagshipEquipChange.help"
+    "ChangeVanguard": {
+      "name": "GemsFarming.ChangeVanguard.name",
+      "help": "GemsFarming.ChangeVanguard.help",
+      "ship": "ship",
+      "ship_equip": "ship_equip"
     },
-    "VanguardChange": {
-      "name": "GemsFarming.VanguardChange.name",
-      "help": "GemsFarming.VanguardChange.help"
+    "ALLowLowVanguardLevel": {
+      "name": "GemsFarming.ALLowLowVanguardLevel.name",
+      "help": "GemsFarming.ALLowLowVanguardLevel.help"
     },
-    "VanguardEquipChange": {
-      "name": "GemsFarming.VanguardEquipChange.name",
-      "help": "GemsFarming.VanguardEquipChange.help"
+    "FleetNumberInHardMode": {
+      "name": "GemsFarming.FleetNumberInHardMode.name",
+      "help": "GemsFarming.FleetNumberInHardMode.help",
+      "0": "0",
+      "1": "1",
+      "2": "2"
     },
-    "LowEmotionRetreat": {
-      "name": "GemsFarming.LowEmotionRetreat.name",
-      "help": "GemsFarming.LowEmotionRetreat.help"
+    "StopIFAutoNotEnsured": {
+      "name": "GemsFarming.StopIFAutoNotEnsured.name",
+      "help": "GemsFarming.StopIFAutoNotEnsured.help"
     },
     "CommonCV": {
       "name": "GemsFarming.CommonCV.name",
@@ -1697,6 +1733,10 @@
     "BuyAmount": {
       "name": "ShipyardDr.BuyAmount.name",
       "help": "ShipyardDr.BuyAmount.help"
+    },
+    "LastRun": {
+      "name": "ShipyardDr.LastRun.name",
+      "help": "ShipyardDr.LastRun.help"
     }
   },
   "Shipyard": {
@@ -1725,6 +1765,10 @@
     "BuyAmount": {
       "name": "Shipyard.BuyAmount.name",
       "help": "Shipyard.BuyAmount.help"
+    },
+    "LastRun": {
+      "name": "Shipyard.LastRun.name",
+      "help": "Shipyard.LastRun.help"
     }
   },
   "Gacha": {
@@ -1814,6 +1858,17 @@
     "Collect": {
       "name": "SupplyPack.Collect.name",
       "help": "SupplyPack.Collect.help"
+    },
+    "DayOfWeek": {
+      "name": "SupplyPack.DayOfWeek.name",
+      "help": "SupplyPack.DayOfWeek.help",
+      "0": "0",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6"
     }
   },
   "Daily": {
@@ -1944,6 +1999,16 @@
       "name": "Exercise._info.name",
       "help": "Exercise._info.help"
     },
+    "DelayUntilHoursBeforeNextUpdate": {
+      "name": "Exercise.DelayUntilHoursBeforeNextUpdate.name",
+      "help": "Exercise.DelayUntilHoursBeforeNextUpdate.help",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "12": "12"
+    },
     "OpponentChooseMode": {
       "name": "Exercise.OpponentChooseMode.name",
       "help": "Exercise.OpponentChooseMode.help",
@@ -1959,6 +2024,10 @@
     "ExercisePreserve": {
       "name": "Exercise.ExercisePreserve.name",
       "help": "Exercise.ExercisePreserve.help"
+    },
+    "EmptyOnceOnSecondFriday": {
+      "name": "Exercise.EmptyOnceOnSecondFriday.name",
+      "help": "Exercise.EmptyOnceOnSecondFriday.help"
     },
     "LowHpThreshold": {
       "name": "Exercise.LowHpThreshold.name",
@@ -2046,9 +2115,11 @@
       "name": "OpsiAshBeacon._info.name",
       "help": "OpsiAshBeacon._info.help"
     },
-    "AshAttack": {
-      "name": "OpsiAshBeacon.AshAttack.name",
-      "help": "OpsiAshBeacon.AshAttack.help"
+    "AttackMode": {
+      "name": "OpsiAshBeacon.AttackMode.name",
+      "help": "OpsiAshBeacon.AttackMode.help",
+      "current": "current",
+      "current_dossier": "current_dossier"
     },
     "OneHitMode": {
       "name": "OpsiAshBeacon.OneHitMode.name",
@@ -2061,16 +2132,6 @@
     "EnsureFullyCollected": {
       "name": "OpsiAshBeacon.EnsureFullyCollected.name",
       "help": "OpsiAshBeacon.EnsureFullyCollected.help"
-    }
-  },
-  "OpsiDossierBeacon": {
-    "_info": {
-      "name": "OpsiDossierBeacon._info.name",
-      "help": "OpsiDossierBeacon._info.help"
-    },
-    "Enable": {
-      "name": "OpsiDossierBeacon.Enable.name",
-      "help": "OpsiDossierBeacon.Enable.help"
     }
   },
   "OpsiFleetFilter": {
@@ -2095,6 +2156,14 @@
       "2": "2",
       "3": "3",
       "4": "4"
+    },
+    "FleetMode": {
+      "name": "OpsiFleet.FleetMode.name",
+      "help": "OpsiFleet.FleetMode.help",
+      "combat_auto": "combat_auto",
+      "combat_manual": "combat_manual",
+      "stand_still_in_the_middle": "stand_still_in_the_middle",
+      "hide_in_bottom_left": "hide_in_bottom_left"
     },
     "Submarine": {
       "name": "OpsiFleet.Submarine.name",
@@ -2289,12 +2358,12 @@
   },
   "AzurLaneUncensored": {
     "_info": {
-      "name": "AzurLaneUncensored._info.name",
-      "help": "AzurLaneUncensored._info.help"
+      "name": "規制解除（中国サーバー以外実行しないでください）",
+      "help": "中国サーバーしかつかえない、実行しないでください。\n仅国服使用。这个工具将执行：\n- 下载反和谐文件\n- 将文件推送至模拟器内\n- 重启游戏客户端"
     },
     "Repository": {
-      "name": "AzurLaneUncensored.Repository.name",
-      "help": "AzurLaneUncensored.Repository.help"
+      "name": "反和谐仓库",
+      "help": "一般不需要修改\n仓库 https://github.com/LmeSzinc/AzurLaneUncensored\n国内镜像（默认） https://gitee.com/LmeSzinc/AzurLaneUncensored"
     }
   },
   "GameManager": {
@@ -2305,6 +2374,308 @@
     "AutoRestart": {
       "name": "GameManager.AutoRestart.name",
       "help": "GameManager.AutoRestart.help"
+    }
+  },
+  "GGHandler": {
+    "_info": {
+      "name": "GGHandler._info.name",
+      "help": "GGHandler._info.help"
+    },
+    "Enabled": {
+      "name": "GGHandler.Enabled.name",
+      "help": "GGHandler.Enabled.help"
+    },
+    "ServerLocation": {
+      "name": "GGHandler.ServerLocation.name",
+      "help": "GGHandler.ServerLocation.help",
+      "cn": "cn",
+      "jp": "jp",
+      "en": "en",
+      "tw": "tw"
+    },
+    "GGMethod": {
+      "name": "GGHandler.GGMethod.name",
+      "help": "GGHandler.GGMethod.help",
+      "screenshot": "screenshot",
+      "u2": "u2"
+    },
+    "GGPanelConfirmTime": {
+      "name": "GGHandler.GGPanelConfirmTime.name",
+      "help": "GGHandler.GGPanelConfirmTime.help"
+    },
+    "RestartATX": {
+      "name": "GGHandler.RestartATX.name",
+      "help": "GGHandler.RestartATX.help"
+    },
+    "GGPackageName": {
+      "name": "GGHandler.GGPackageName.name",
+      "help": "GGHandler.GGPackageName.help"
+    },
+    "AutoRestartGG": {
+      "name": "GGHandler.AutoRestartGG.name",
+      "help": "GGHandler.AutoRestartGG.help"
+    },
+    "RestartEverytime": {
+      "name": "GGHandler.RestartEverytime.name",
+      "help": "GGHandler.RestartEverytime.help"
+    },
+    "GGMultiplyingFactor": {
+      "name": "GGHandler.GGMultiplyingFactor.name",
+      "help": "GGHandler.GGMultiplyingFactor.help"
+    },
+    "DisabledTask": {
+      "name": "GGHandler.DisabledTask.name",
+      "help": "GGHandler.DisabledTask.help",
+      "disable_all_dangerous_task": "disable_all_dangerous_task",
+      "disable_guild_and_dangerous": "disable_guild_and_dangerous",
+      "disable_exercise": "disable_exercise",
+      "enable_all": "enable_all"
+    }
+  },
+  "PowerLimit": {
+    "_info": {
+      "name": "PowerLimit._info.name",
+      "help": "PowerLimit._info.help"
+    },
+    "Exercise": {
+      "name": "PowerLimit.Exercise.name",
+      "help": "PowerLimit.Exercise.help"
+    },
+    "Raid": {
+      "name": "PowerLimit.Raid.name",
+      "help": "PowerLimit.Raid.help"
+    },
+    "Ash": {
+      "name": "PowerLimit.Ash.name",
+      "help": "PowerLimit.Ash.help"
+    }
+  },
+  "Oil": {
+    "_info": {
+      "name": "Oil._info.name",
+      "help": "Oil._info.help"
+    },
+    "Value": {
+      "name": "Oil.Value.name",
+      "help": "Oil.Value.help"
+    },
+    "Limit": {
+      "name": "Oil.Limit.name",
+      "help": "Oil.Limit.help"
+    },
+    "Color": {
+      "name": "Oil.Color.name",
+      "help": "Oil.Color.help"
+    },
+    "Record": {
+      "name": "Oil.Record.name",
+      "help": "Oil.Record.help"
+    }
+  },
+  "Coin": {
+    "_info": {
+      "name": "Coin._info.name",
+      "help": "Coin._info.help"
+    },
+    "Value": {
+      "name": "Coin.Value.name",
+      "help": "Coin.Value.help"
+    },
+    "Limit": {
+      "name": "Coin.Limit.name",
+      "help": "Coin.Limit.help"
+    },
+    "Color": {
+      "name": "Coin.Color.name",
+      "help": "Coin.Color.help"
+    },
+    "Record": {
+      "name": "Coin.Record.name",
+      "help": "Coin.Record.help"
+    }
+  },
+  "Gem": {
+    "_info": {
+      "name": "Gem._info.name",
+      "help": "Gem._info.help"
+    },
+    "Value": {
+      "name": "Gem.Value.name",
+      "help": "Gem.Value.help"
+    },
+    "Color": {
+      "name": "Gem.Color.name",
+      "help": "Gem.Color.help"
+    },
+    "Record": {
+      "name": "Gem.Record.name",
+      "help": "Gem.Record.help"
+    }
+  },
+  "Pt": {
+    "_info": {
+      "name": "Pt._info.name",
+      "help": "Pt._info.help"
+    },
+    "Value": {
+      "name": "Pt.Value.name",
+      "help": "Pt.Value.help"
+    },
+    "Color": {
+      "name": "Pt.Color.name",
+      "help": "Pt.Color.help"
+    },
+    "Record": {
+      "name": "Pt.Record.name",
+      "help": "Pt.Record.help"
+    }
+  },
+  "YellowCoin": {
+    "_info": {
+      "name": "YellowCoin._info.name",
+      "help": "YellowCoin._info.help"
+    },
+    "Value": {
+      "name": "YellowCoin.Value.name",
+      "help": "YellowCoin.Value.help"
+    },
+    "Color": {
+      "name": "YellowCoin.Color.name",
+      "help": "YellowCoin.Color.help"
+    },
+    "Record": {
+      "name": "YellowCoin.Record.name",
+      "help": "YellowCoin.Record.help"
+    }
+  },
+  "PurpleCoin": {
+    "_info": {
+      "name": "PurpleCoin._info.name",
+      "help": "PurpleCoin._info.help"
+    },
+    "Value": {
+      "name": "PurpleCoin.Value.name",
+      "help": "PurpleCoin.Value.help"
+    },
+    "Color": {
+      "name": "PurpleCoin.Color.name",
+      "help": "PurpleCoin.Color.help"
+    },
+    "Record": {
+      "name": "PurpleCoin.Record.name",
+      "help": "PurpleCoin.Record.help"
+    }
+  },
+  "ActionPoint": {
+    "_info": {
+      "name": "ActionPoint._info.name",
+      "help": "ActionPoint._info.help"
+    },
+    "Value": {
+      "name": "ActionPoint.Value.name",
+      "help": "ActionPoint.Value.help"
+    },
+    "Total": {
+      "name": "ActionPoint.Total.name",
+      "help": "ActionPoint.Total.help"
+    },
+    "Color": {
+      "name": "ActionPoint.Color.name",
+      "help": "ActionPoint.Color.help"
+    },
+    "Record": {
+      "name": "ActionPoint.Record.name",
+      "help": "ActionPoint.Record.help"
+    }
+  },
+  "Merit": {
+    "_info": {
+      "name": "Merit._info.name",
+      "help": "Merit._info.help"
+    },
+    "Value": {
+      "name": "Merit.Value.name",
+      "help": "Merit.Value.help"
+    },
+    "Color": {
+      "name": "Merit.Color.name",
+      "help": "Merit.Color.help"
+    },
+    "Record": {
+      "name": "Merit.Record.name",
+      "help": "Merit.Record.help"
+    }
+  },
+  "Cube": {
+    "_info": {
+      "name": "Cube._info.name",
+      "help": "Cube._info.help"
+    },
+    "Value": {
+      "name": "Cube.Value.name",
+      "help": "Cube.Value.help"
+    },
+    "Color": {
+      "name": "Cube.Color.name",
+      "help": "Cube.Color.help"
+    },
+    "Record": {
+      "name": "Cube.Record.name",
+      "help": "Cube.Record.help"
+    }
+  },
+  "Core": {
+    "_info": {
+      "name": "Core._info.name",
+      "help": "Core._info.help"
+    },
+    "Value": {
+      "name": "Core.Value.name",
+      "help": "Core.Value.help"
+    },
+    "Color": {
+      "name": "Core.Color.name",
+      "help": "Core.Color.help"
+    },
+    "Record": {
+      "name": "Core.Record.name",
+      "help": "Core.Record.help"
+    }
+  },
+  "Medal": {
+    "_info": {
+      "name": "Medal._info.name",
+      "help": "Medal._info.help"
+    },
+    "Value": {
+      "name": "Medal.Value.name",
+      "help": "Medal.Value.help"
+    },
+    "Color": {
+      "name": "Medal.Color.name",
+      "help": "Medal.Color.help"
+    },
+    "Record": {
+      "name": "Medal.Record.name",
+      "help": "Medal.Record.help"
+    }
+  },
+  "GuildCoin": {
+    "_info": {
+      "name": "GuildCoin._info.name",
+      "help": "GuildCoin._info.help"
+    },
+    "Value": {
+      "name": "GuildCoin.Value.name",
+      "help": "GuildCoin.Value.help"
+    },
+    "Color": {
+      "name": "GuildCoin.Color.name",
+      "help": "GuildCoin.Color.help"
+    },
+    "Record": {
+      "name": "GuildCoin.Record.name",
+      "help": "GuildCoin.Record.help"
     }
   },
   "Storage": {
@@ -2319,93 +2690,115 @@
   },
   "Gui": {
     "Aside": {
-      "Install": "Gui.Aside.Install",
-      "Develop": "Gui.Aside.Develop",
-      "Performance": "Gui.Aside.Performance",
-      "Setting": "Gui.Aside.Setting",
-      "AddAlas": "Gui.Aside.AddAlas"
+      "Install": "インストール",
+      "Develop": "開発",
+      "Performance": "機能",
+      "Setting": "設定",
+      "AddAlas": "追加"
     },
     "Button": {
-      "Start": "Gui.Button.Start",
-      "Stop": "Gui.Button.Stop",
-      "ScrollON": "Gui.Button.ScrollON",
-      "ScrollOFF": "Gui.Button.ScrollOFF",
-      "ClearLog": "Gui.Button.ClearLog",
-      "Setting": "Gui.Button.Setting",
-      "CheckUpdate": "Gui.Button.CheckUpdate",
-      "ClickToUpdate": "Gui.Button.ClickToUpdate",
-      "RetryUpdate": "Gui.Button.RetryUpdate",
-      "CancelUpdate": "Gui.Button.CancelUpdate"
+      "Start": "実行",
+      "Stop": "中止",
+      "ScrollON": "自動スクロール ON",
+      "ScrollOFF": "自動スクロール OFF",
+      "DashboardON": "Gui.Button.DashboardON",
+      "DashboardOFF": "Gui.Button.DashboardOFF",
+      "ClearLog": "ログクリーニング",
+      "Setting": "設定",
+      "CheckUpdate": "アップデータチェック",
+      "ClickToUpdate": "アップデータ実行",
+      "RetryUpdate": "アップデータ再試行",
+      "CancelUpdate": "アップデータ中止"
     },
     "Toast": {
-      "DisableTranslateMode": "Gui.Toast.DisableTranslateMode",
-      "ConfigSaved": "Gui.Toast.ConfigSaved",
-      "AlasIsRunning": "Gui.Toast.AlasIsRunning",
-      "ClickToUpdate": "Gui.Toast.ClickToUpdate"
+      "DisableTranslateMode": "クリックして翻訳モードを中止します",
+      "ConfigSaved": "コンフィグ設定は保存されました",
+      "AlasIsRunning": "スケジューラーはもう実行しています",
+      "ClickToUpdate": "新しいアップデータがあります。クリックしてアップデータ"
     },
     "Status": {
-      "Running": "Gui.Status.Running",
-      "Inactive": "Gui.Status.Inactive",
-      "Warning": "Gui.Status.Warning",
-      "Updating": "Gui.Status.Updating"
+      "Running": "実行中",
+      "Inactive": "実行中止",
+      "Warning": "エラー発生",
+      "Updating": "アップデータを待っています"
     },
     "MenuAlas": {
-      "Overview": "Gui.MenuAlas.Overview",
-      "Log": "Gui.MenuAlas.Log"
+      "Overview": "概要",
+      "Log": "実行ログ"
     },
     "MenuDevelop": {
-      "HomePage": "Gui.MenuDevelop.HomePage",
-      "Translate": "Gui.MenuDevelop.Translate",
-      "Update": "Gui.MenuDevelop.Update",
-      "Remote": "Gui.MenuDevelop.Remote",
-      "Utils": "Gui.MenuDevelop.Utils"
+      "HomePage": "ホームページ",
+      "Translate": "翻訳",
+      "Update": "アップデータ",
+      "Remote": "遠隔操作",
+      "Utils": "ツール"
     },
     "Overview": {
-      "Scheduler": "Gui.Overview.Scheduler",
-      "Log": "Gui.Overview.Log",
-      "Running": "Gui.Overview.Running",
-      "Pending": "Gui.Overview.Pending",
-      "Waiting": "Gui.Overview.Waiting",
-      "NoTask": "Gui.Overview.NoTask"
+      "Scheduler": "スケジューラー",
+      "Dashboard": "Gui.Overview.Dashboard",
+      "SecondsAgo": "Seconds ago",
+      "MinutesAgo": "Minutes ago",
+      "HoursAgo": "Hours ago",
+      "DaysAgo": "Days ago",
+      "MonthsAgo": "Months ago",
+      "YearsAgo": "Years ago",
+      "NoData": "No data",
+      "Oil": "Oil",
+      "Coin": "Coin",
+      "Gem": "Gem",
+      "Cube": "Cube",
+      "Pt": "Event Pt",
+      "YellowCoin": "Operation Supply Coin",
+      "PurpleCoin": "Special Item Token",
+      "ActionPoint": "Action Point",
+      "Merit": "Merit",
+      "Medal": "Medal",
+      "Core": "Core Data",
+      "GuildCoin": "Guild Coin",
+      "Log": "ログ",
+      "Running": "実行中",
+      "Pending": "隊列中",
+      "Waiting": "Waiting",
+      "NoTask": "No Task"
     },
     "AddAlas": {
-      "PopupTitle": "Gui.AddAlas.PopupTitle",
-      "NewName": "Gui.AddAlas.NewName",
-      "CopyFrom": "Gui.AddAlas.CopyFrom",
-      "Confirm": "Gui.AddAlas.Confirm",
-      "FileExist": "Gui.AddAlas.FileExist",
-      "InvalidChar": "設定ファイル名には次の文字は使えません：.\\/:*?\"<>|"
+      "PopupTitle": "新しいコンフィグを追加",
+      "NewName": "コンフィグ名",
+      "CopyFrom": "既存コンフィグからコピー",
+      "Confirm": "追加",
+      "FileExist": "既存コンフィグと同じネーミングとなっていますから別名前を入力してください",
+      "InvalidChar": "コンフィグ名には下記の文字を含めることはできません：.\\/:*?\"<>|"
     },
     "Update": {
-      "UpToDate": "Gui.Update.UpToDate",
-      "HaveUpdate": "Gui.Update.HaveUpdate",
-      "UpdateStart": "Gui.Update.UpdateStart",
-      "UpdateWait": "Gui.Update.UpdateWait",
-      "UpdateRun": "Gui.Update.UpdateRun",
-      "UpdateSuccess": "Gui.Update.UpdateSuccess",
-      "UpdateFailed": "Gui.Update.UpdateFailed",
-      "UpdateChecking": "Gui.Update.UpdateChecking",
-      "UpdateCancel": "Gui.Update.UpdateCancel",
-      "UpdateFinish": "Gui.Update.UpdateFinish",
-      "Local": "Gui.Update.Local",
-      "Upstream": "Gui.Update.Upstream",
-      "Author": "Gui.Update.Author",
-      "Time": "Gui.Update.Time",
-      "Message": "Gui.Update.Message",
-      "DisabledWarn": "Gui.Update.DisabledWarn",
-      "DetailedHistory": "Gui.Update.DetailedHistory"
+      "UpToDate": "今Alasは最新バージョンです",
+      "HaveUpdate": "新しいアップデータがあります",
+      "UpdateStart": "アップデータ開始",
+      "UpdateWait": "全てのプロセスの完了を待っています",
+      "UpdateRun": "アップデータ中",
+      "UpdateSuccess": "アップデータ完了、再起動しています",
+      "UpdateFailed": "アップデータ失敗、./log/*_gui.txtでログをチェックしてください",
+      "UpdateChecking": "アップデータチェック中",
+      "UpdateCancel": "アップデータ中止、再起動しています",
+      "UpdateFinish": "アップデータ完了、再起動してください",
+      "Local": "ロケール",
+      "Upstream": "オンライン",
+      "Author": "提出者",
+      "Time": "提出時間",
+      "Message": "提出内容",
+      "DisabledWarn": "アップデータモジュールは稼働されませんのでAlasを再起動してください",
+      "DetailedHistory": "詳しい提出履歴"
     },
     "Remote": {
-      "Running": "Gui.Remote.Running",
-      "NotRunning": "Gui.Remote.NotRunning",
-      "NotEnable": "Gui.Remote.NotEnable",
-      "EntryPoint": "Gui.Remote.EntryPoint",
-      "ConfigureHint": "Gui.Remote.ConfigureHint",
-      "SSHNotInstall": "Gui.Remote.SSHNotInstall"
+      "Running": "実行中",
+      "NotRunning": "サーバーとの接続が中断したため、実行していない",
+      "NotEnable": "未启用，在 deploy.yaml 中设置 webui 密码并启用远程控制",
+      "EntryPoint": "远程访问 url 地址:",
+      "ConfigureHint": "配置教程：",
+      "SSHNotInstall": "システムでsshツールが探さない、sshツールをインストールしてください"
     },
     "Text": {
-      "InvalidFeedBack": "Gui.Text.InvalidFeedBack",
-      "Clear": "Gui.Text.Clear"
+      "InvalidFeedBack": "フォーマットエラー。 例：{0}",
+      "Clear": "消除"
     }
   }
 }

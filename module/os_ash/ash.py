@@ -49,6 +49,10 @@ class AshCombat(Combat):
         return False
 
     def handle_battle_preparation(self):
+        # Power limit check
+        from module.gg_handler.gg_handler import GGHandler
+        GGHandler(config=self.config, device=self.device).power_limit('Ash')
+
         if super().handle_battle_preparation():
             return True
 
@@ -134,10 +138,6 @@ class OSAsh(UI, MapEventHandler):
             in: is_in_map
             out: is_in_map
         """
-        if not self.config.OpsiAshBeacon_AshAttack \
-                and not self.config.OpsiDossierBeacon_Enable:
-            return False
-
         if self.ash_collect_status() >= 100 \
                 and self._support_call_ash_beacon_task():
             self.config.task_call(task='OpsiAshBeacon')

@@ -166,6 +166,8 @@ class RewardDorm(UI):
             # Handle all popups
             if self.ui_additional():
                 continue
+            if self.appear_then_click(DORM_FURNITURE_CONFIRM, offset=(30, 30), interval=3):
+                continue
 
             # DORM_CHECK on screen before attempt
             # Stacked popup may fail detection as
@@ -330,6 +332,8 @@ class RewardDorm(UI):
                 continue
             if self.handle_popup_cancel('DORM_FEED'):
                 continue
+            if self.ui_additional():
+                continue
 
     def dorm_run(self, feed=True, collect=True):
         """
@@ -372,11 +376,20 @@ class RewardDorm(UI):
             in: page_dorm
         """
         timeout = Timer(2, count=4).start()
+        current = 0
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
+
+            # Handle popups
+            if self.appear_then_click(DORM_FURNITURE_CONFIRM, offset=(30, 30), interval=3):
+                timeout.reset()
+                continue
+            if self.ui_additional():
+                timeout.reset()
+                continue
 
             current, _, total = OCR_SLOT.ocr(self.device.image)
 

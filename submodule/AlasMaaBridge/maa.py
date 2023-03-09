@@ -50,11 +50,15 @@ class ArknightsAutoScript(AzurLaneAutoScript):
 
         logger.info(f'MAA安装路径：{self.config.MaaEmulator_MaaPath}')
         try:
-            incremental_path = None
+            incremental_path = [os.path.join(self.config.MaaEmulator_MaaPath, './cache')]
             if self.config.MaaEmulator_PackageName in ["YoStarEN", "YoStarJP", "YoStarKR", "txwy"]:
-                incremental_path = os.path.join(
+                incremental_path.append(os.path.join(
                     self.config.MaaEmulator_MaaPath,
-                    './resource/global/' + self.config.MaaEmulator_PackageName
+                    './resource/global/' + self.config.MaaEmulator_PackageName)
+                )
+                incremental_path.append(os.path.join(
+                    self.config.MaaEmulator_MaaPath,
+                    './cache/resource/global/' + self.config.MaaEmulator_PackageName)
                 )
             AssistantHandler.load(self.config.MaaEmulator_MaaPath, incremental_path)
         except ModuleNotFoundError:
@@ -82,6 +86,7 @@ class ArknightsAutoScript(AzurLaneAutoScript):
         asst = AssistantHandler.Asst(callback)
 
         asst.set_instance_option(AssistantHandler.InstanceOptionType.touch_type, self.config.MaaEmulator_TouchMethod)
+        asst.set_instance_option(AssistantHandler.InstanceOptionType.adb_lite_enabled, '0')
         if self.config.MaaEmulator_DeploymentWithPause:
             if self.config.MaaEmulator_TouchMethod == 'maatouch':
                 asst.set_instance_option(AssistantHandler.InstanceOptionType.deployment_with_pause, '1')
@@ -117,6 +122,9 @@ class ArknightsAutoScript(AzurLaneAutoScript):
 
     def maa_roguelike(self):
         AssistantHandler(config=self.config, asst=self.asst).roguelike()
+
+    def maa_reclamation_algorithm(self):
+        AssistantHandler(config=self.config, asst=self.asst).reclamation_algorithm()
 
 
 def loop(config_name):

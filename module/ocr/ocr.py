@@ -33,8 +33,7 @@ class Ocr:
             name (str):
         """
         self.name = str(buttons) if isinstance(buttons, Button) else name
-        self.buttons = buttons if isinstance(buttons, list) else [buttons]
-        self.buttons = [button.area if isinstance(button, Button) else button for button in self.buttons]
+        self._buttons = buttons
         self.letter = letter
         self.threshold = threshold
         self.alphabet = alphabet
@@ -43,6 +42,17 @@ class Ocr:
     @property
     def cnocr(self) -> "AlOcr":
         return OCR_MODEL.__getattribute__(self.lang)
+
+    @property
+    def buttons(self):
+        buttons = self._buttons
+        buttons = buttons if isinstance(buttons, list) else [buttons]
+        buttons = [button.area if isinstance(button, Button) else button for button in buttons]
+        return buttons
+
+    @buttons.setter
+    def buttons(self, value):
+        self._buttons = value
 
     def pre_process(self, image):
         """
@@ -107,9 +117,7 @@ class OcrYuv(Ocr):
     @cached_property
     def letter_y(self):
         arr = np.array([[self.letter]], dtype=np.uint8)
-        image = cv2.cvtColor(arr, cv2.COLOR_RGB2YUV)
-        y, _, _ = cv2.split(image)
-        y = y[0][0]
+        y = rgb2luma(arr)[0][0]
         return y
 
     def pre_process(self, image):
@@ -120,8 +128,7 @@ class OcrYuv(Ocr):
         Returns:
             np.ndarray: Shape (width, height)
         """
-        image = cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
-        y, _, _ = cv2.split(image)
+        y = rgb2luma(image)
         letter_y = (np.ones(y.shape) * self.letter_y).astype(np.uint8)
         diff = cv2.absdiff(y, letter_y)
         diff = cv2.multiply(diff, 255.0 / self.threshold)

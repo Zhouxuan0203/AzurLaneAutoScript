@@ -57,7 +57,8 @@ def retry(func):
                     self.detect_package()
             # DroidCast not running
             # requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-            except requests.exceptions.ConnectionError as e:
+            # ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=20482): Read timed out. (read timeout=3)
+            except (requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout) as e:
                 logger.error(e)
 
                 def init():
@@ -90,8 +91,7 @@ def retry(func):
 class DroidCast(Uiautomator2):
     """
     DroidCast, another screenshot method, https://github.com/rayworks/DroidCast
-
-    DroidCast is Added to ALAS for MuMu X support.
+    DroidCast_raw, a modified version of DroidCast sending raw bitmap https://github.com/Torther/DroidCastS
     """
 
     _droidcast_port: int = 0
@@ -150,7 +150,6 @@ class DroidCast(Uiautomator2):
     @Config.when(DROIDCAST_VERSION='DroidCast_raw')
     def droidcast_init(self):
         logger.hr('Droidcast init')
-        self.resolution_check_uiautomator2()
         self.droidcast_stop()
 
         logger.info('Pushing DroidCast apk')
@@ -211,7 +210,7 @@ class DroidCast(Uiautomator2):
                     raise DroidCastVersionIncompatible(
                         'Requesting screenshots from `DroidCast_raw` but server is `DroidCast`')
             # ValueError: cannot reshape array of size 0 into shape (720,1280)
-            raise ImageTruncated(str(e))
+            raise ImageTruncated(str(e)+'\nIf your emulator resolution not 1280x720, please set emulator resolution to 1280x720')
 
         # Convert RGB565 to RGB888
         # https://blog.csdn.net/happy08god/article/details/10516871
@@ -274,7 +273,7 @@ class DroidCast(Uiautomator2):
         """
         List all DroidCast processes.
         """
-        processes = self.proc_list_uiautomato2()
+        processes = self.proc_list_uiautomator2()
         for proc in processes:
             if 'com.rayworks.droidcast.Main' in proc.cmdline:
                 yield proc

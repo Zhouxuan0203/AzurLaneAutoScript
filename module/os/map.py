@@ -378,9 +378,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
         # Restart the game manually rather
         # than through 'task_call'
         # Ongoing task is uninterrupted
-        self.device.app_stop()
-        self.device.app_start()
-        LoginHandler(self.config, self.device).handle_app_login()
+        self.device.app_restart()
 
         self.ui_ensure(page_os)
         if repair:
@@ -398,8 +396,8 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
         """
         remain = get_os_reset_remain()
         if remain <= 0:
-            if self.config.cross_get('OpsiCrossMonth.Scheduler.Enable', default=False):
-                logger.info('Just less than 1 day to OpSi reset, OpsiCrossMonth is enabled'
+            if self.config.is_task_enabled('OpsiCrossMonth'):
+                logger.info('Just less than 1 day to OpSi reset, OpsiCrossMonth is enabled, '
                             'set OpsiMeowfficerFarming.ActionPointPreserve to 300 temporarily')
                 return 300
             else:
@@ -408,8 +406,8 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
                 return 0
         elif self.is_cl1_enabled and remain <= 2:
             logger.info('Just less than 3 days to OpSi reset, '
-                        'set ActionPointPreserve to 500 temporarily for hazard 1 leveling')
-            return 500
+                        'set ActionPointPreserve to 1000 temporarily for hazard 1 leveling')
+            return 1000
         elif remain <= 2:
             logger.info('Just less than 3 days to OpSi reset, '
                         'set ActionPointPreserve to 300 temporarily')
@@ -528,10 +526,18 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
                 # Auto search can not handle siren searching device.
                 continue
 
-    def interrupt_auto_search(self):
+    def interrupt_auto_search(self, skip_first_screenshot=True):
         logger.info('Interrupting auto search')
         while 1:
-            self.device.screenshot()
+            if skip_first_screenshot:
+                skip_first_screenshot = False
+            else:
+                self.device.screenshot()
+
+            # End
+            if self.ui_page_appear(page_main):
+                logger.info('Auto search interrupted')
+                self.config.task_stop()
 
             if self.appear_then_click(AUTO_SEARCH_REWARD, offset=(50, 50), interval=3):
                 continue
@@ -546,10 +552,12 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
                 continue
             if self.ui_additional():
                 continue
-            # End
-            if self.ui_page_appear(page_main):
-                logger.info('Auto search interrupted')
-                self.config.task_stop()
+            if self.handle_map_event():
+                continue
+            if self.handle_battle_status():
+                continue
+            if self.handle_exp_info():
+                continue
 
     def os_auto_search_run(self, drop=None, strategic=False):
         for _ in range(5):
@@ -565,7 +573,7 @@ class OSMap(OSFleet, Map, GlobeCamera, StrategicSearchHandler):
 
             # Continue if was Auto search interrupted by ash popup
             # Break if zone cleared
-            if self.config.OpsiAshBeacon_AshAttack:
+            if self.config.is_task_enabled('OpsiAshBeacon'):
                 if self.handle_ash_beacon_attack() or self.ash_popup_canceled:
                     strategic = False
                     continue

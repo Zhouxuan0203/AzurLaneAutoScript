@@ -158,7 +158,7 @@ class InfoHandler(ModuleBase):
         return appear
 
     def handle_combat_low_emotion(self):
-        if not self.config.Emotion_IgnoreLowEmotionWarn:
+        if not self.emotion.is_ignore:
             return False
 
         result = self.handle_popup_confirm('IGNORE_LOW_EMOTION')
@@ -205,6 +205,13 @@ class InfoHandler(ModuleBase):
             bool:
         """
         return self.appear_then_click(VOTE_CANCEL, offset=(20, 20), interval=2)
+
+    def handle_get_skin(self):
+        """
+        Returns:
+            bool:
+        """
+        return self.appear_then_click(GET_SKIN, offset=(20, 20), interval=2)
 
     """
     Guild popup info
@@ -343,10 +350,12 @@ class InfoHandler(ModuleBase):
             else:
                 self._story_option_record = options_count
                 self._story_option_confirm.reset()
-        if self.appear(STORY_SKIP, offset=(20, 20), interval=2):
+        if self.appear(STORY_SKIP, offset=(20, 20), interval=2) \
+                or self.appear(STORY_SKIP_2, offset=(20, 20), interval=2):
             # Confirm it's story
             # When story play speed is Very Fast, Alas clicked story skip but story disappeared
             # This click will interrupt auto search
+            self.interval_reset([STORY_SKIP, STORY_SKIP_2])
             if self._story_confirm.reached():
                 if drop:
                     drop.handle_add(self, before=2)
@@ -394,3 +403,23 @@ class InfoHandler(ModuleBase):
             return False
 
         self.ensure_no_story()
+
+    """
+    Game tips
+    """
+    def handle_game_tips(self):
+        """
+        Returns:
+            bool: If handled
+        """
+        if self.appear(GAME_TIPS, offset=(20, 20), interval=2):
+            self.device.click(GAME_TIPS)
+            return True
+        if self.appear(GAME_TIPS3, offset=(20, 20), interval=2):
+            self.device.click(GAME_TIPS)
+            return True
+        if self.appear(GAME_TIPS4, offset=(20, 20), interval=2):
+            self.device.click(GAME_TIPS)
+            return True
+
+        return False

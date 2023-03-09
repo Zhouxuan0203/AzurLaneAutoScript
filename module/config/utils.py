@@ -515,7 +515,6 @@ def get_server_next_update(daily_trigger):
         future = local_now + timedelta(seconds=s)
         trigger.append(future)
     update = sorted(trigger)[0]
-    update = update + timedelta(hours=2)
     return update
 
 
@@ -540,7 +539,6 @@ def get_server_last_update(daily_trigger):
         future = local_now + timedelta(seconds=s)
         trigger.append(future)
     update = sorted(trigger)[-1]
-    update = update + timedelta(hours=2)
     return update
 
 
@@ -592,6 +590,17 @@ def get_nearest_weekday_date(target):
     return local_reset
 
 
+def get_server_weekday():
+    """
+    Returns:
+        int: The server's current day of the week
+    """
+    diff = server_time_offset()
+    server_now = datetime.now() - diff
+    result = server_now.weekday()
+    return result
+
+
 def random_id(length=32):
     """
     Args:
@@ -633,6 +642,48 @@ def type_to_str(typ):
     if not isinstance(typ, type):
         typ = type(typ).__name__
     return str(typ)
+
+
+def time_delta(_timedelta):
+    """
+    Output the delta between two times
+
+    Args:
+        _timedelta : datetime.timedelta
+
+    Returns:
+        dict :  {
+                 'Y' : int,
+                 'M' : int,
+                 'D' : int,
+                 'h' : int,
+                 'm' : int,
+                 's' : int
+        }
+    """
+    _time_delta = abs(_timedelta.total_seconds())
+    d_base = datetime(2010, 1, 1, 0, 0, 0)
+    d = datetime(2010, 1, 1, 0, 0, 0)-_timedelta
+    _time_dict = {
+        'Y': d.year - d_base.year,
+        'M': d.month - d_base.month,
+        'D': d.day - d_base.day,
+        'h': d.hour - d_base.hour,
+        'm': d.minute - d_base.minute,
+        's': d.second - d_base.second
+    }
+    # _sec ={
+    #     'Y': 365*24*60*60,
+    #     'M': 30*24*60*60,
+    #     'D': 24*60*60,
+    #     'h': 60*60,
+    #     'm': 60,
+    #     's': 1
+    # }
+    # for _key in _time_dict:
+    #     _time_dict[_key] = int(_time_delta//_sec[_key])
+    #     _time_delta = _time_delta%_sec[_key]
+    return _time_dict
 
 
 if __name__ == '__main__':

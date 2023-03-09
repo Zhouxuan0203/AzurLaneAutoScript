@@ -5,9 +5,7 @@ from cached_property import cached_property
 
 from deploy.utils import DEPLOY_TEMPLATE, poor_yaml_read, poor_yaml_write
 from module.base.timer import timer
-from module.config.redirect_utils.shop_filter import bp_redirect
-from module.config.redirect_utils.utils import upload_redirect, api_redirect
-from module.config.redirect_utils.os_handler import action_point_redirect
+from module.config.redirect_utils.utils import *
 from module.config.server import to_server, to_package, VALID_PACKAGE, VALID_CHANNEL_PACKAGE, VALID_SERVER_LIST
 from module.config.utils import *
 
@@ -133,6 +131,15 @@ class ConfigGenerator:
         return read_file(filepath_argument('gui'))
 
     @cached_property
+    def dashboard(self):
+        """
+        <dashboard>
+          - <group>
+        """
+        return read_file(filepath_argument('dashboard'))
+
+
+    @cached_property
     @timer
     def args(self):
         """
@@ -146,7 +153,9 @@ class ConfigGenerator:
         """
         # Construct args
         data = {}
-        for task, groups in self.task.items():
+        # Add dashboard to args
+        dashboard_and_task = {**self.task, **self.dashboard}
+        for task, groups in dashboard_and_task.items():
             # Add storage to all task
             groups.append('Storage')
             for group in groups:
@@ -190,7 +199,7 @@ class ConfigGenerator:
             if isinstance(v, dict):
                 if deep_get(v, keys='type') in ['lock']:
                     deep_default(v, keys='display', value="disabled")
-                else:
+                elif deep_get(v, keys='value') is not None:
                     deep_default(v, keys='display', value='hide')
                 for arg_k, arg_v in v.items():
                     deep_set(data, keys=p + [arg_k], value=arg_v)
@@ -386,6 +395,7 @@ class ConfigGenerator:
                     else:
                         insert('Event')
                         insert('Event2')
+                        insert('Event3')
                         insert('EventA')
                         insert('EventB')
                         insert('EventC')
@@ -394,7 +404,7 @@ class ConfigGenerator:
                         insert('GemsFarming')
 
         # Remove campaign_main from event list
-        for task in ['Event', 'Event2', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily', 'WarArchives']:
+        for task in ['Event', 'Event2', 'Event3', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily', 'WarArchives']:
             options = deep_get(self.args, keys=f'{task}.Campaign.Event.option')
             options = [option for option in options if option != 'campaign_main']
             deep_set(self.args, keys=f'{task}.Campaign.Event.option', value=options)
@@ -415,7 +425,7 @@ class ConfigGenerator:
 
         docker = {
             'GitExecutable': '/usr/bin/git',
-            'PythonExecutable': '/app/pyroot/bin/python',
+            'PythonExecutable': '/usr/local/bin/python',
             'RequirementsFile': './deploy/docker/requirements.txt',
             'AdbExecutable': '/usr/bin/adb',
         }
@@ -470,29 +480,55 @@ class ConfigGenerator:
 class ConfigUpdater:
     # source, target, (optional)convert_func
     redirection = [
-        ('OpsiDaily.OpsiDaily.BuySupply', 'OpsiShop.Scheduler.Enable'),
-        ('OpsiDaily.Scheduler.Enable', 'OpsiDaily.OpsiDaily.DoMission'),
-        ('OpsiShop.Scheduler.Enable', 'OpsiShop.OpsiShop.BuySupply'),
-        ('ShopOnce.GuildShop.Filter', 'ShopOnce.GuildShop.Filter', bp_redirect),
-        ('ShopOnce.MedalShop2.Filter', 'ShopOnce.MedalShop2.Filter', bp_redirect),
-        (('Alas.DropRecord.SaveResearch', 'Alas.DropRecord.UploadResearch'),
-         'Alas.DropRecord.ResearchRecord', upload_redirect),
-        (('Alas.DropRecord.SaveCommission', 'Alas.DropRecord.UploadCommission'),
-         'Alas.DropRecord.CommissionRecord', upload_redirect),
-        (('Alas.DropRecord.SaveOpsi', 'Alas.DropRecord.UploadOpsi'),
-         'Alas.DropRecord.OpsiRecord', upload_redirect),
-        (('Alas.DropRecord.SaveMeowfficerTalent', 'Alas.DropRecord.UploadMeowfficerTalent'),
-         'Alas.DropRecord.MeowfficerTalent', upload_redirect),
-        ('Alas.DropRecord.SaveCombat', 'Alas.DropRecord.CombatRecord', upload_redirect),
-        ('Alas.DropRecord.SaveMeowfficer', 'Alas.DropRecord.MeowfficerBuy', upload_redirect),
-        ('Alas.Emulator.PackageName', 'Alas.DropRecord.API', api_redirect),
-        ('Alas.RestartEmulator.Enable', 'Alas.RestartEmulator.ErrorRestart'),
-        ('OpsiGeneral.OpsiGeneral.BuyActionPoint', 'OpsiGeneral.OpsiGeneral.BuyActionPointLimit', action_point_redirect),
-        ('BattlePass.BattlePass.BattlePassReward', 'Freebies.BattlePass.Collect'),
-        ('DataKey.Scheduler.Enable', 'Freebies.DataKey.Collect'),
-        ('DataKey.DataKey.ForceGet', 'Freebies.DataKey.ForceCollect'),
-        ('SupplyPack.SupplyPack.WeeklyFreeSupplyPack', 'Freebies.SupplyPack.Collect'),
-        ('Commission.Commission.CommissionFilter', 'Commission.Commission.CustomFilter')
+        # ('OpsiDaily.OpsiDaily.BuySupply', 'OpsiShop.Scheduler.Enable'),
+        # ('OpsiDaily.Scheduler.Enable', 'OpsiDaily.OpsiDaily.DoMission'),
+        # ('OpsiShop.Scheduler.Enable', 'OpsiShop.OpsiShop.BuySupply'),
+        # ('ShopOnce.GuildShop.Filter', 'ShopOnce.GuildShop.Filter', bp_redirect),
+        # ('ShopOnce.MedalShop2.Filter', 'ShopOnce.MedalShop2.Filter', bp_redirect),
+        # (('Alas.DropRecord.SaveResearch', 'Alas.DropRecord.UploadResearch'),
+        #  'Alas.DropRecord.ResearchRecord', upload_redirect),
+        # (('Alas.DropRecord.SaveCommission', 'Alas.DropRecord.UploadCommission'),
+        #  'Alas.DropRecord.CommissionRecord', upload_redirect),
+        # (('Alas.DropRecord.SaveOpsi', 'Alas.DropRecord.UploadOpsi'),
+        #  'Alas.DropRecord.OpsiRecord', upload_redirect),
+        # (('Alas.DropRecord.SaveMeowfficerTalent', 'Alas.DropRecord.UploadMeowfficerTalent'),
+        #  'Alas.DropRecord.MeowfficerTalent', upload_redirect),
+        # ('Alas.DropRecord.SaveCombat', 'Alas.DropRecord.CombatRecord', upload_redirect),
+        # ('Alas.DropRecord.SaveMeowfficer', 'Alas.DropRecord.MeowfficerBuy', upload_redirect),
+        # ('Alas.Emulator.PackageName', 'Alas.DropRecord.API', api_redirect),
+        # ('Alas.RestartEmulator.Enable', 'Alas.RestartEmulator.ErrorRestart'),
+        # ('OpsiGeneral.OpsiGeneral.BuyActionPoint', 'OpsiGeneral.OpsiGeneral.BuyActionPointLimit', action_point_redirect),
+        # ('BattlePass.BattlePass.BattlePassReward', 'Freebies.BattlePass.Collect'),
+        # ('DataKey.Scheduler.Enable', 'Freebies.DataKey.Collect'),
+        # ('DataKey.DataKey.ForceGet', 'Freebies.DataKey.ForceCollect'),
+        # ('SupplyPack.SupplyPack.WeeklyFreeSupplyPack', 'Freebies.SupplyPack.Collect'),
+        # ('Commission.Commission.CommissionFilter', 'Commission.Commission.CustomFilter'),
+        # 2023.02.17
+        ('OpsiAshBeacon.OpsiDossierBeacon.Enable', 'OpsiAshBeacon.OpsiAshBeacon.AttackMode', dossier_redirect),
+        ('General.Retirement.EnhanceFavourite', 'General.Enhance.ShipToEnhance', enhance_favourite_redirect),
+        ('General.Retirement.EnhanceFilter', 'General.Enhance.Filter'),
+        ('General.Retirement.EnhanceCheckPerCategory', 'General.Enhance.CheckPerCategory', enhance_check_redirect),
+        ('General.Retirement.OldRetireN', 'General.OldRetire.N'),
+        ('General.Retirement.OldRetireR', 'General.OldRetire.R'),
+        ('General.Retirement.OldRetireSR', 'General.OldRetire.SR'),
+        ('General.Retirement.OldRetireSSR', 'General.OldRetire.SSR'),
+        (('GemsFarming.GemsFarming.FlagshipChange', 'GemsFarming.GemsFarming.FlagshipEquipChange'),
+         'GemsFarming.GemsFarming.ChangeFlagship',
+         change_ship_redirect),
+        (('GemsFarming.GemsFarming.VanguardChange', 'GemsFarming.GemsFarming.VanguardEquipChange'),
+         'GemsFarming.GemsFarming.ChangeVanguard',
+         change_ship_redirect),
+    ]
+    redirection += [
+        (
+            (f'{task}.Emotion.CalculateEmotion', f'{task}.Emotion.IgnoreLowEmotionWarn'),
+            f'{task}.Emotion.Mode',
+            emotion_mode_redirect
+        ) for task in [
+            'Main', 'Main2', 'Main3', 'GemsFarming',
+            'Event', 'Event2', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily',
+            'Sos', 'WarArchives',
+        ]
     ]
 
     @cached_property
@@ -529,7 +565,7 @@ class ConfigUpdater:
         # Update to latest event
         server = to_server(deep_get(new, 'Alas.Emulator.PackageName', 'cn'))
         if not is_template:
-            for task in ['Event', 'Event2', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily']:
+            for task in ['Event', 'Event2', 'Event3', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily']:
                 deep_set(new,
                          keys=f'{task}.Campaign.Event',
                          value=deep_get(self.args, f'{task}.Campaign.Event.{server}'))

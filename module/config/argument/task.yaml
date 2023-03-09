@@ -2,6 +2,7 @@
 # Define argument group of tasks.
 # --------------------
 
+
 # ==================== Alas ====================
 
 Alas:
@@ -12,6 +13,9 @@ Alas:
   - DropRecord
 General:
   - Retirement
+  - OneClickRetire
+  - Enhance
+  - OldRetire
 Restart:
   - Scheduler
 
@@ -50,8 +54,15 @@ GemsFarming:
   - Campaign
   - StopCondition
   - Fleet
+Sos:
+  - Scheduler
+  - Sos
+  - Campaign
+  - StopCondition
+  - Fleet
   - Submarine
   - Emotion
+  - HpControl
   - EnemyPriority
 
 # ==================== Event ====================
@@ -69,6 +80,15 @@ Event:
   - HpControl
   - EnemyPriority
 Event2:
+  - Scheduler
+  - Campaign
+  - StopCondition
+  - Fleet
+  - Submarine
+  - Emotion
+  - HpControl
+  - EnemyPriority
+Event3:
   - Scheduler
   - Campaign
   - StopCondition
@@ -126,6 +146,15 @@ EventSp:
   - Emotion
   - HpControl
   - EnemyPriority
+WarArchives:
+  - Scheduler
+  - Campaign
+  - StopCondition
+  - Fleet
+  - Submarine
+  - Emotion
+  - HpControl
+  - EnemyPriority
 Raid:
   - Scheduler
   - Raid
@@ -170,8 +199,17 @@ Reward:
   - Scheduler
   - Reward
 
-# ==================== DailyReward ====================
+# ==================== DailyMission ====================
 
+Daily:
+  - Scheduler
+  - Daily
+Hard:
+  - Scheduler
+  - Hard
+Exercise:
+  - Scheduler
+  - Exercise
 ShopFrequent:
   - Scheduler
   - GeneralShop
@@ -194,37 +232,6 @@ Freebies:
   - DataKey
   - Mail
   - SupplyPack
-
-# ==================== DailyMission ====================
-
-Daily:
-  - Scheduler
-  - Daily
-Hard:
-  - Scheduler
-  - Hard
-Exercise:
-  - Scheduler
-  - Exercise
-Sos:
-  - Scheduler
-  - Sos
-  - Campaign
-  - StopCondition
-  - Fleet
-  - Submarine
-  - Emotion
-  - HpControl
-  - EnemyPriority
-WarArchives:
-  - Scheduler
-  - Campaign
-  - StopCondition
-  - Fleet
-  - Submarine
-  - Emotion
-  - HpControl
-  - EnemyPriority
 
 # ==================== Opsi ====================
 
@@ -293,3 +300,5 @@ AzurLaneUncensored:
   - AzurLaneUncensored
 GameManager:
   - GameManager
+  - GGHandler
+  - PowerLimit

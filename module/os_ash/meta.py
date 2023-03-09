@@ -1,6 +1,7 @@
 from enum import Enum
 
 import module.config.server as server
+from module.base.timer import Timer
 from module.combat.combat import BATTLE_PREPARATION
 from module.logger import logger
 from module.meta_reward.meta_reward import MetaReward
@@ -307,14 +308,13 @@ class OpsiAshBeacon(Meta):
         # Page meta main
         if self.appear(ASH_SHOWDOWN, offset=(30, 30), interval=2):
             # Beacon
-            if self.config.OpsiAshBeacon_AshAttack \
-                    and self._check_beacon_point():
+            if self._check_beacon_point():
                 self.device.click(META_MAIN_BEACON_ENTRANCE)
                 logger.info('Select beacon entrance into')
                 return True
             # Dossier
             if _server_support() \
-                    and self.config.OpsiDossierBeacon_Enable \
+                    and self.config.OpsiAshBeacon_AttackMode == 'current_dossier' \
                     and self._check_dossier_point():
                 if self.appear_then_click(META_MAIN_DOSSIER_ENTRANCE, offset=(20, 20), interval=2):
                     logger.info('Select dossier entrance into')
@@ -324,8 +324,7 @@ class OpsiAshBeacon(Meta):
             return False
         # Page beacon
         elif self.appear(BEACON_LIST, offset=(20, 20), interval=2):
-            if self.config.OpsiAshBeacon_AshAttack \
-                    and self._check_beacon_point():
+            if self._check_beacon_point():
                 self.device.click(META_BEGIN_ENTRANCE)
                 logger.info('Begin a beacon')
             else:
@@ -337,7 +336,7 @@ class OpsiAshBeacon(Meta):
         # Page dossier
         elif _server_support() \
                 and self.appear(DOSSIER_LIST, offset=(20, 20), interval=2):
-            if self.config.OpsiDossierBeacon_Enable \
+            if self.config.OpsiAshBeacon_AttackMode == 'current_dossier' \
                     and self._check_dossier_point():
                 if self.appear_then_click(META_BEGIN_ENTRANCE, offset=(20, 20), interval=2):
                     logger.info('Begin a dossier')
@@ -418,15 +417,22 @@ class OpsiAshBeacon(Meta):
 
 class AshBeaconAssist(Meta):
     def _attack_meta(self, skip_first_screenshot=True):
+        timeout = Timer(3, count=9).start()
+        appeared = False
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
             else:
                 self.device.screenshot()
 
+            if not appeared and timeout.reached():
+                logger.info('No meta beacon found, delay task OpsiAshAssist')
+                break
+
             if self.handle_map_event():
                 continue
             if self.appear(ASH_START, offset=(20, 20)):
+                appeared = True
                 remain_times = self.digit_ocr_point_and_check(BEACON_REMAIN, 1)
                 if remain_times:
                     self._ensure_meta_level()
@@ -434,6 +440,8 @@ class AshBeaconAssist(Meta):
                 else:
                     logger.info('No enough assist times, complete')
                     break
+
+        return appeared
 
     def _make_an_attack(self):
         """
@@ -530,6 +538,9 @@ class AshBeaconAssist(Meta):
 
     def run(self):
         self.ui_ensure(page_reward)
-        self._begin_meta_assist()
-        MetaReward(self.config, self.device).run()
-        self.config.task_delay(server_update=True)
+
+        if self._begin_meta_assist():
+            MetaReward(self.config, self.device).run()
+            self.config.task_delay(server_update=True)
+        else:
+            self.config.task_delay(minute=(10, 20))
