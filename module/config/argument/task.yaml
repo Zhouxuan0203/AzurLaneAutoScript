@@ -2,7 +2,6 @@
 # Define argument group of tasks.
 # --------------------
 
-
 # ==================== Alas ====================
 
 Alas:
@@ -54,16 +53,6 @@ GemsFarming:
   - Campaign
   - StopCondition
   - Fleet
-Sos:
-  - Scheduler
-  - Sos
-  - Campaign
-  - StopCondition
-  - Fleet
-  - Submarine
-  - Emotion
-  - HpControl
-  - EnemyPriority
 Sos:
   - Scheduler
   - Sos

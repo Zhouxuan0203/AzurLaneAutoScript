@@ -6,6 +6,7 @@ from module.equipment.assets import *
 from module.equipment.equipment_change import EquipmentChange
 from module.equipment.fleet_equipment import OCR_FLEET_INDEX
 from module.exception import CampaignEnd
+from module.handler.assets import AUTO_SEARCH_MAP_OPTION_OFF
 from module.logger import logger
 from module.map.assets import FLEET_PREPARATION, MAP_PREPARATION, FLEET_ENTER_FLAGSHIP_HARD_1, \
     FLEET_ENTER_FLAGSHIP_HARD_2, FLEET_ENTER_HARD_1, FLEET_ENTER_HARD_2
@@ -24,8 +25,15 @@ class GemsCampaignOverride(CampaignBase):
     def handle_combat_low_emotion(self):
         """
         Overwrite info_handler.handle_combat_low_emotion()
-        If GEMS_LOW_EMOTION_WITHDRAW is True, withdraw combat and change flag ship
+        If change vanguard is enabled, withdraw combat and change flagship and vanguard
         """
+        if self.config.GemsFarming_ChangeVanguard == 'disabled':
+            result = self.handle_popup_confirm('IGNORE_LOW_EMOTION')
+            if result:
+                # Avoid clicking AUTO_SEARCH_MAP_OPTION_OFF
+                self.interval_reset(AUTO_SEARCH_MAP_OPTION_OFF)
+            return result
+
         if self.handle_popup_cancel('IGNORE_LOW_EMOTION'):
             self.config.GEMS_EMOTION_TRIGGRED = True
             logger.hr('EMOTION WITHDRAW')
@@ -70,7 +78,8 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
                 self.FLEET_ENTER_FLAGSHIP = FLEET_ENTER_FLAGSHIP_HARD_2
                 self.FLEET_ENTER = FLEET_ENTER_HARD_2
             else:
-                logger.critical('Fleet number to change not set, check your settings')
+                logger.critical(
+                    'Fleet number to change not set, check your settings')
                 from module.exception import RequestHumanTakeover
                 raise RequestHumanTakeover
             self.hard_mode = True
@@ -88,8 +97,11 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
         class GemsCampaign(GemsCampaignOverride, self.module.Campaign):
             pass
 
-        self.campaign = GemsCampaign(device=self.campaign.device, config=self.campaign.config)
+        self.campaign = GemsCampaign(
+            device=self.campaign.device, config=self.campaign.config)
         self.campaign.config.override(Emotion_Mode='ignore')
+        self.campaign.config.override(
+            EnemyPriority_EnemyScaleBalanceWeight='S1_enemy_first')
 
     @property
     def change_flagship(self):
@@ -124,7 +136,8 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
         button_area = self.campaign.ENTRANCE.button
         button = Button(area=button_area, color=(0, 0, 0), button=button_area)
         self.device.click(button)
-        self.ui_click(click_button=MAP_PREPARATION, check_button=FLEET_PREPARATION)
+        self.ui_click(click_button=MAP_PREPARATION,
+                      check_button=FLEET_PREPARATION)
 
     def _ship_detail_enter_hard(self, button):
         self._fleet_detail_enter_hard()
@@ -217,8 +230,10 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
         scanner.disable('rarity')
 
         if not self.server_support_status_fleet_scan():
-            logger.info(f'Server {self.config.SERVER} does not yet support status and fleet scanning')
-            logger.info('Please contact the developer to improve as soon as possible')
+            logger.info(
+                f'Server {self.config.SERVER} does not yet support status and fleet scanning')
+            logger.info(
+                'Please contact the developer to improve as soon as possible')
             scanner.disable('status', 'fleet')
             scanner.set_limitation(level=(1, 1))
 
@@ -317,7 +332,8 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
 
         ship = self.get_common_rarity_cv()
         if ship:
-            self._ship_change_confirm(min(ship, key=lambda s: (s.level, -s.emotion)).button)
+            self._ship_change_confirm(
+                min(ship, key=lambda s: (s.level, -s.emotion)).button)
 
             logger.info('Change flagship success')
             return True
@@ -344,7 +360,8 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
 
         ship = self.get_common_rarity_dd()
         if ship:
-            self._ship_change_confirm(max(ship, key=lambda s: s.emotion).button)
+            self._ship_change_confirm(
+                max(ship, key=lambda s: s.emotion).button)
 
             logger.info('Change vanguard ship success')
             return True
@@ -380,7 +397,6 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
             total (int):
         """
         self.config.STOP_IF_REACH_LV32 = self.change_flagship
-        self.campaign_floder = folder
         self.config.RETIRE_KEEP_COMMON_CV = True
         self.event_hard_mode_override()
         while 1:
@@ -397,8 +413,9 @@ class GemsFarming(CampaignRun, Dock, EquipmentChange):
 
             # End
             if self._trigger_lv32 or self._trigger_emotion:
-                success = self.flagship_change()
-
+                success = True
+                if self.change_flagship:
+                    success = self.flagship_change()
                 if self.change_vanguard:
                     success = success and self.vanguard_change()
 

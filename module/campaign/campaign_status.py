@@ -12,9 +12,12 @@ from module.ui.ui import UI
 from module.log_res.log_res import LogRes
 
 OCR_OIL = Digit(OCR_OIL, name='OCR_OIL', letter=(247, 247, 247), threshold=128)
-OCR_COIN = Digit(OCR_COIN, name='OCR_COIN', letter=(239, 239, 239), threshold=128)
-OCR_OIL_LIMIT = Digit(OCR_OIL_LIMIT, name='OCR_OIL_LIMIT', letter=(235, 235, 235), threshold=128)
-OCR_COIN_LIMIT = Digit(OCR_COIN_LIMIT, name='OCR_COIN_LIMIT', letter=(239, 239, 239), threshold=128)
+OCR_COIN = Digit(OCR_COIN, name='OCR_COIN',
+                 letter=(239, 239, 239), threshold=128)
+OCR_OIL_LIMIT = Digit(OCR_OIL_LIMIT, name='OCR_OIL_LIMIT',
+                      letter=(235, 235, 235), threshold=128)
+OCR_COIN_LIMIT = Digit(OCR_COIN_LIMIT, name='OCR_COIN_LIMIT',
+                       letter=(239, 239, 239), threshold=128)
 
 
 class PtOcr(Ocr):
@@ -126,11 +129,8 @@ class CampaignStatus(UI):
             }
             if _oil['Value'] >= 100:
                 break
-        LogRes(self.config).Oil = _oil
-        if update:
-            self.config.update()
 
-        return _oil['Value']
+        return amount
 
     def is_balancer_task(self):
         """

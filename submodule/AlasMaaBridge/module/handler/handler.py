@@ -31,7 +31,8 @@ class AssistantHandler:
         AssistantHandler.Asst = asst.Asst
         AssistantHandler.Message = utils.Message
         AssistantHandler.InstanceOptionType = utils.InstanceOptionType
-        AssistantHandler.Asst.load(path, user_dir=path, incremental_path=incremental_path)
+        AssistantHandler.Asst.load(
+            path, user_dir=path, incremental_path=incremental_path)
 
         AssistantHandler.ASST_HANDLER = None
 
@@ -158,8 +159,10 @@ class AssistantHandler:
                     drops_filter = self.config.MaaFight_Drops
                     try:
                         for drop in drop_list:
-                            drops_filter = re.sub(f'{drop["itemId"]}:(?P<value>\\d+)', replace, drops_filter)
-                            drops_filter = re.sub(f'{drop["itemName"]}:(?P<value>\\d+)', replace, drops_filter)
+                            drops_filter = re.sub(
+                                f'{drop["itemId"]}:(?P<value>\\d+)', replace, drops_filter)
+                            drops_filter = re.sub(
+                                f'{drop["itemName"]}:(?P<value>\\d+)', replace, drops_filter)
                     except ValueError:
                         drops_filter = None
                     self.config.MaaFight_Drops = drops_filter
@@ -250,7 +253,8 @@ class AssistantHandler:
             args["times"] = self.config.MaaFight_Times
 
         if self.config.MaaFight_Drops:
-            old = read_file(os.path.join(self.config.MaaEmulator_MaaPath, './resource/item_index.json'))
+            old = read_file(os.path.join(
+                self.config.MaaEmulator_MaaPath, './resource/item_index.json'))
             new = {}
             for key, value in old.items():
                 new[value['name']] = key
@@ -289,6 +293,7 @@ class AssistantHandler:
             else:
                 self.config.task_delay(success=False)
         else:
+            self.config.task_call('MaaAward', force_call=False)
             self.config.task_delay(success=True)
 
     def recruit(self):
@@ -324,7 +329,7 @@ class AssistantHandler:
         args = {
             "facility": self.split_filter(self.config.MaaInfrast_Facility),
             "drones": self.config.MaaInfrast_Drones,
-            "threshold": self.config.MaaInfrast_WorkThreshold,
+            "threshold": self.config.MaaInfrast_WorkThreshold / 24,
             "replenish": self.config.MaaInfrast_Replenish,
             "dorm_notstationed_enabled": self.config.MaaInfrast_Notstationed,
             "dorm_trust_enabled": self.config.MaaInfrast_Trust
@@ -347,7 +352,8 @@ class AssistantHandler:
             args['filename'] = self.config.MaaCustomInfrast_Filename
 
             end_time = datetime.datetime.now() + datetime.timedelta(minutes=30)
-            plans = deep_get(read_file(self.config.MaaCustomInfrast_Filename), keys='plans')
+            plans = deep_get(
+                read_file(self.config.MaaCustomInfrast_Filename), keys='plans')
             periods = deep_get(plans[0], keys='period')
 
             if periods is None:
@@ -362,11 +368,13 @@ class AssistantHandler:
                     for j, period in enumerate(periods):
                         start_time = datetime.datetime.combine(
                             datetime.date.today(),
-                            datetime.datetime.strptime(period[0], '%H:%M').time()
+                            datetime.datetime.strptime(
+                                period[0], '%H:%M').time()
                         )
                         end_time = datetime.datetime.combine(
                             datetime.date.today(),
-                            datetime.datetime.strptime(period[1], '%H:%M').time()
+                            datetime.datetime.strptime(
+                                period[1], '%H:%M').time()
                         )
                         now_time = datetime.datetime.now()
                         if start_time <= now_time <= end_time:
@@ -376,7 +384,8 @@ class AssistantHandler:
                             if j != len(periods) - 1 and period[1] == '23:59' and periods[j + 1][0] == '00:00':
                                 end_time = datetime.datetime.combine(
                                     datetime.date.today() + datetime.timedelta(days=1),
-                                    datetime.datetime.strptime(periods[j + 1][1], '%H:%M').time()
+                                    datetime.datetime.strptime(
+                                        periods[j + 1][1], '%H:%M').time()
                                 )
                             break
                     if 'plan_index' in args:
@@ -384,21 +393,26 @@ class AssistantHandler:
 
             self.maa_start('Infrast', args)
             if periods is None:
-                custom_period = self.config.MaaCustomInfrast_CustomPeriod.replace('，', ',').split(',')
+                custom_period = self.config.MaaCustomInfrast_CustomPeriod.replace(
+                    '，', ',').split(',')
                 custom_period = [int(x) for x in custom_period]
-                self.config.task_delay(minute=60 * custom_period[self.config.MaaCustomInfrast_PlanIndex])
-                self.config.MaaCustomInfrast_PlanIndex = (self.config.MaaCustomInfrast_PlanIndex + 1) % len(plans)
+                self.config.task_delay(
+                    minute=60 * custom_period[self.config.MaaCustomInfrast_PlanIndex])
+                self.config.MaaCustomInfrast_PlanIndex = (
+                    self.config.MaaCustomInfrast_PlanIndex + 1) % len(plans)
             else:
-                self.config.task_delay(target=end_time + datetime.timedelta(minutes=1))
+                self.config.task_delay(
+                    target=end_time + datetime.timedelta(minutes=1))
         else:
-            if self.config.MaaInfrast_WorkThreshold >= self.config.MaaInfrast_ShiftThreshold:
+            if self.config.MaaInfrast_WorkThreshold <= self.config.MaaInfrast_ShiftThreshold:
                 logger.warning('基建换班心情阈值必须小于基建工作心情阈值，请调整基建设置')
                 raise RequestHumanTakeover
 
             self.maa_start('Infrast', args)
             # 根据心情阈值计算下次换班时间
             # (基建工作心情阈值 - 基建换班心情阈值) / 0.75 * 60
-            t = (self.config.MaaInfrast_WorkThreshold - self.config.MaaInfrast_ShiftThreshold) * 80
+            t = (self.config.MaaInfrast_WorkThreshold -
+                 self.config.MaaInfrast_ShiftThreshold) * 80
             self.config.task_delay(minute=t)
 
     def mall(self):
@@ -460,7 +474,8 @@ class AssistantHandler:
         filename = self.config.MaaCopilot_FileName
         if filename.startswith('maa://'):
             logger.info('正在从神秘代码中下载作业')
-            r = requests.get(f"https://prts.maa.plus/copilot/get/{filename.strip('maa://')}", timeout=30)
+            r = requests.get(
+                f"https://prts.maa.plus/copilot/get/{filename.strip('maa://')}", timeout=30)
             if r.status_code != 200:
                 logger.critical('作业文件下载失败，请检查神秘代码或网络状况')
                 raise RequestHumanTakeover
@@ -468,8 +483,10 @@ class AssistantHandler:
 
             r.encoding = 'utf-8'
             buf = json.loads(r.text)['data']['content'].encode('utf-8')
-            filename = os.path.join(self.config.MaaEmulator_MaaPath, './resource/_temp_copilot.json')
-            filename = filename.replace('\\', '/').replace('./', '/').replace('//', '/')
+            filename = os.path.join(
+                self.config.MaaEmulator_MaaPath, './resource/_temp_copilot.json')
+            filename = filename.replace(
+                '\\', '/').replace('./', '/').replace('//', '/')
             with open(filename, 'wb') as f:
                 f.write(buf)
 
@@ -480,8 +497,10 @@ class AssistantHandler:
             raise RequestHumanTakeover
 
         if self.config.MaaCopilot_Identify:
-            logger.info(deep_get(homework, keys='doc.title', default='标题：无') + '\n')
-            logger.info('\n' + deep_get(homework, keys='doc.details', default='内容：无') + '\n')
+            logger.info(
+                deep_get(homework, keys='doc.title', default='标题：无') + '\n')
+            logger.info('\n' + deep_get(homework,
+                        keys='doc.details', default='内容：无') + '\n')
             if deep_get(homework, keys='type') == 'SSS':
                 out = '\n'
                 opers = deep_get(homework, keys='opers')
@@ -503,10 +522,10 @@ class AssistantHandler:
             return
 
         args = {
-                "stage_name": stage,
-                "filename": filename,
-                "formation": self.config.MaaCopilot_Formation
-            }
+            "stage_name": stage,
+            "filename": filename,
+            "formation": self.config.MaaCopilot_Formation
+        }
         for i in range(self.config.MaaCopilot_Cycle):
             if deep_get(homework, keys='type') == 'SSS':
                 self.maa_start('SSSCopilot', args)

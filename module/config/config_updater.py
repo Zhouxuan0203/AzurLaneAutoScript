@@ -46,7 +46,8 @@ class Event:
                 self.__setattr__(server, None)
             else:
                 if self.is_war_archives:
-                    self.__setattr__(server, ARCHIVES_PREFIX[server] + self.__getattribute__(server))
+                    self.__setattr__(
+                        server, ARCHIVES_PREFIX[server] + self.__getattribute__(server))
 
     def __str__(self):
         return self.directory
@@ -138,7 +139,6 @@ class ConfigGenerator:
         """
         return read_file(filepath_argument('dashboard'))
 
-
     @cached_property
     @timer
     def args(self):
@@ -160,9 +160,11 @@ class ConfigGenerator:
             groups.append('Storage')
             for group in groups:
                 if group not in self.argument:
-                    print(f'`{task}.{group}` is not related to any argument group')
+                    print(
+                        f'`{task}.{group}` is not related to any argument group')
                     continue
-                deep_set(data, keys=[task, group], value=deepcopy(self.argument[group]))
+                deep_set(data, keys=[task, group],
+                         value=deepcopy(self.argument[group]))
 
         def check_override(path, value):
             # Check existence
@@ -172,8 +174,10 @@ class ConfigGenerator:
                 return False
             # Check type
             # But allow `Interval` to be different
-            old_value = old.get('value', None) if isinstance(old, dict) else old
-            value = old.get('value', None) if isinstance(value, dict) else value
+            old_value = old.get('value', None) if isinstance(
+                old, dict) else old
+            value = old.get('value', None) if isinstance(
+                value, dict) else value
             if type(value) != type(old_value) \
                     and old_value is not None \
                     and path[2] not in ['SuccessInterval', 'FailureInterval']:
@@ -183,7 +187,8 @@ class ConfigGenerator:
             # Check option
             if isinstance(old, dict) and 'option' in old:
                 if value not in old['option']:
-                    print(f'`{value}` is not an option of argument `{".".join(path)}`')
+                    print(
+                        f'`{value}` is not an option of argument `{".".join(path)}`')
                     return False
             return True
 
@@ -209,8 +214,10 @@ class ConfigGenerator:
         # Set command
         for task in self.task.keys():
             if deep_get(data, keys=f'{task}.Scheduler.Command'):
-                deep_set(data, keys=f'{task}.Scheduler.Command.value', value=task)
-                deep_set(data, keys=f'{task}.Scheduler.Command.display', value='hide')
+                deep_set(
+                    data, keys=f'{task}.Scheduler.Command.value', value=task)
+                deep_set(
+                    data, keys=f'{task}.Scheduler.Command.display', value='hide')
 
         return data
 
@@ -234,9 +241,11 @@ class ConfigGenerator:
 
             option = ''
             if 'option' in data and data['option']:
-                option = '  # ' + ', '.join([str(opt) for opt in data['option']])
+                option = '  # ' + ', '.join([str(opt)
+                                            for opt in data['option']])
             path = '.'.join(path)
-            lines.append(f'    {path_to_arg(path)} = {repr(parse_value(data["value"], data=data))}{option}')
+            lines.append(
+                f'    {path_to_arg(path)} = {repr(parse_value(data["value"], data=data))}{option}')
             visited_path.add(path)
 
         with open(filepath_code(), 'w', encoding='utf-8', newline='') as f:
@@ -302,12 +311,14 @@ class ConfigGenerator:
 
         for package, server_and_channel in VALID_CHANNEL_PACKAGE.items():
             server, channel = server_and_channel
-            name = deep_get(new, keys=['Emulator', 'PackageName', to_package(server)])
+            name = deep_get(
+                new, keys=['Emulator', 'PackageName', to_package(server)])
             if lang == SERVER_TO_LANG[server]:
                 value = f'{name} {channel}渠道服 {package}'
             else:
                 value = f'{name} {package}'
-            deep_set(new, keys=['Emulator', 'PackageName', package], value=value)
+            deep_set(
+                new, keys=['Emulator', 'PackageName', package], value=value)
         # Game server names
         for server, _list in VALID_SERVER_LIST.items():
             for index in range(len(_list)):
@@ -380,11 +391,13 @@ class ConfigGenerator:
                 name = event.__getattribute__(server)
 
                 def insert(key):
-                    opts = deep_get(self.args, keys=f'{key}.Campaign.Event.option')
+                    opts = deep_get(
+                        self.args, keys=f'{key}.Campaign.Event.option')
                     if event not in opts:
                         opts.append(event)
                     if name:
-                        deep_default(self.args, keys=f'{key}.Campaign.Event.{server}', value=event)
+                        deep_default(
+                            self.args, keys=f'{key}.Campaign.Event.{server}', value=event)
 
                 if name:
                     if event.is_raid:
@@ -406,8 +419,10 @@ class ConfigGenerator:
         # Remove campaign_main from event list
         for task in ['Event', 'Event2', 'Event3', 'EventA', 'EventB', 'EventC', 'EventD', 'EventSp', 'Raid', 'RaidDaily', 'WarArchives']:
             options = deep_get(self.args, keys=f'{task}.Campaign.Event.option')
-            options = [option for option in options if option != 'campaign_main']
-            deep_set(self.args, keys=f'{task}.Campaign.Event.option', value=options)
+            options = [
+                option for option in options if option != 'campaign_main']
+            deep_set(
+                self.args, keys=f'{task}.Campaign.Event.option', value=options)
 
     @staticmethod
     def generate_deploy_template():
@@ -504,10 +519,13 @@ class ConfigUpdater:
         # ('SupplyPack.SupplyPack.WeeklyFreeSupplyPack', 'Freebies.SupplyPack.Collect'),
         # ('Commission.Commission.CommissionFilter', 'Commission.Commission.CustomFilter'),
         # 2023.02.17
-        ('OpsiAshBeacon.OpsiDossierBeacon.Enable', 'OpsiAshBeacon.OpsiAshBeacon.AttackMode', dossier_redirect),
-        ('General.Retirement.EnhanceFavourite', 'General.Enhance.ShipToEnhance', enhance_favourite_redirect),
+        ('OpsiAshBeacon.OpsiDossierBeacon.Enable',
+         'OpsiAshBeacon.OpsiAshBeacon.AttackMode', dossier_redirect),
+        ('General.Retirement.EnhanceFavourite',
+         'General.Enhance.ShipToEnhance', enhance_favourite_redirect),
         ('General.Retirement.EnhanceFilter', 'General.Enhance.Filter'),
-        ('General.Retirement.EnhanceCheckPerCategory', 'General.Enhance.CheckPerCategory', enhance_check_redirect),
+        ('General.Retirement.EnhanceCheckPerCategory',
+         'General.Enhance.CheckPerCategory', enhance_check_redirect),
         ('General.Retirement.OldRetireN', 'General.OldRetire.N'),
         ('General.Retirement.OldRetireR', 'General.OldRetire.R'),
         ('General.Retirement.OldRetireSR', 'General.OldRetire.SR'),
@@ -518,10 +536,12 @@ class ConfigUpdater:
         (('GemsFarming.GemsFarming.VanguardChange', 'GemsFarming.GemsFarming.VanguardEquipChange'),
          'GemsFarming.GemsFarming.ChangeVanguard',
          change_ship_redirect),
+        ('Alas.DropRecord.API', 'Alas.DropRecord.API', api_redirect2)
     ]
     redirection += [
         (
-            (f'{task}.Emotion.CalculateEmotion', f'{task}.Emotion.IgnoreLowEmotionWarn'),
+            (f'{task}.Emotion.CalculateEmotion',
+             f'{task}.Emotion.IgnoreLowEmotionWarn'),
             f'{task}.Emotion.Mode',
             emotion_mode_redirect
         ) for task in [
@@ -610,7 +630,7 @@ class ConfigUpdater:
                 value = []
                 error = False
                 for attribute in source:
-                    tmp = deep_get(old, keys=attribute, default=None)
+                    tmp = deep_get(old, keys=attribute)
                     if tmp is None:
                         error = True
                         continue
@@ -618,7 +638,7 @@ class ConfigUpdater:
                 if error:
                     continue
             else:
-                value = deep_get(old, keys=source, default=None)
+                value = deep_get(old, keys=source)
                 if value is None:
                     continue
 
@@ -626,10 +646,11 @@ class ConfigUpdater:
                 value = update_func(value)
 
             if isinstance(target, tuple):
-                for i in range(0, len(target)):
-                    if deep_get(old, keys=target[i], default=None) is None:
-                        deep_set(new, keys=target[i], value=value[i])
-            elif deep_get(old, keys=target, default=None) is None:
+                for k, v in zip(target, value):
+                    # Allow update same key
+                    if (deep_get(old, keys=k) is None) or (source == target):
+                        deep_set(new, keys=k, value=v)
+            elif (deep_get(old, keys=target) is None) or (source == target):
                 deep_set(new, keys=target, value=value)
 
         return new
@@ -646,7 +667,11 @@ class ConfigUpdater:
             dict:
         """
         old = read_file(filepath_config(config_name))
-        return self.config_update(old, is_template=is_template)
+        new = self.config_update(old, is_template=is_template)
+        # The updated config did not write into file, although it doesn't matters.
+        # Commented for performance issue
+        # self.write_file(config_name, new)
+        return new
 
     @staticmethod
     def write_file(config_name, data, mod_name='alas'):

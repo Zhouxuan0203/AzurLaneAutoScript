@@ -23,14 +23,18 @@ class CampaignEvent(CampaignStatus):
                 self.config.cross_set(keys=keys, value=False)
 
             for task in ['GemsFarming']:
-                name = self.config.cross_get(keys=f'{task}.Campaign.Name', default='2-4')
+                name = self.config.cross_get(
+                    keys=f'{task}.Campaign.Name', default='2-4')
                 if not self.stage_is_main(name):
                     logger.info(f'Reset GemsFarming to 2-4')
-                    self.config.cross_set(keys=f'{task}.Campaign.Name', value='2-4')
-                    self.config.cross_set(keys=f'{task}.Campaign.Event', value='campaign_main')
+                    self.config.cross_set(
+                        keys=f'{task}.Campaign.Name', value='2-4')
+                    self.config.cross_set(
+                        keys=f'{task}.Campaign.Event', value='campaign_main')
 
             logger.info(f'Reset event time limit')
-            self.config.cross_set(keys='EventGeneral.EventGeneral.TimeLimit', value=DEFAULT_TIME)
+            self.config.cross_set(
+                keys='EventGeneral.EventGeneral.TimeLimit', value=DEFAULT_TIME)
 
     def event_pt_limit_triggered(self):
         """
@@ -119,18 +123,8 @@ class CampaignEvent(CampaignStatus):
         Pages:
             in: page_event or page_sp
         """
-        from module.config.utils import deep_get
         limit = self.config.TaskBalancer_CoinLimit
-        coin = deep_get(self.config.data, 'Dashboard.Coin.Value')
-        logger.attr('Coin Count', coin)
-        tasks = [
-            'Event',
-            'Event2',
-            'Event3',
-            'Raid',
-            'GemsFarming',
-        ]
-        command = self.config.Scheduler_Command
+        coin = self.get_coin()
         # Check Coin
         if coin == 0:
             # Avoid wrong/zero OCR result
@@ -147,12 +141,11 @@ class CampaignEvent(CampaignStatus):
                 return False
 
     def handle_task_balancer(self):
-        if self.config.TaskBalancer_Enable and self.triggered_task_balancer():
-            self.config.task_delay(minute=5)
-            next_task = self.config.TaskBalancer_TaskCall
-            logger.hr(f'TaskBalancer triggered, switching task to {next_task}')
-            self.config.task_call(next_task)
-            self.config.task_stop()
+        self.config.task_delay(minute=5)
+        next_task = self.config.TaskBalancer_TaskCall
+        logger.hr(f'TaskBalancer triggered, switching task to {next_task}')
+        self.config.task_call(next_task)
+        self.config.task_stop()
 
     def ui_goto_event(self):
         # Already in page_event, skip event_check.

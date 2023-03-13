@@ -21,8 +21,10 @@ class GeneratedConfig:
     Emulator_Serial = 'auto'
     Emulator_PackageName = 'auto'  # auto, com.bilibili.azurlane, com.YoStarEN.AzurLane, com.YoStarJP.AzurLane, com.hkmanjuu.azurlane.gp, com.bilibili.blhx.huawei, com.bilibili.blhx.mi, com.tencent.tmgp.bilibili.blhx, com.bilibili.blhx.baidu, com.bilibili.blhx.qihoo, com.bilibili.blhx.nearme.gamecenter, com.bilibili.blhx.vivo, com.bilibili.blhx.mz, com.bilibili.blhx.uc, com.bilibili.blhx.mzw, com.yiwu.blhx.yx15, com.bilibili.blhx.m4399, com.hkmanjuu.azurlane.gp.mc
     Emulator_ServerName = 'disabled'  # disabled, cn_android-0, cn_android-1, cn_android-2, cn_android-3, cn_android-4, cn_android-5, cn_android-6, cn_android-7, cn_android-8, cn_android-9, cn_android-10, cn_android-11, cn_android-12, cn_android-13, cn_android-14, cn_android-15, cn_android-16, cn_android-17, cn_android-18, cn_android-19, cn_android-20, cn_android-21, cn_android-22, cn_ios-0, cn_ios-1, cn_ios-2, cn_ios-3, cn_ios-4, cn_ios-5, cn_ios-6, cn_ios-7, cn_ios-8, cn_ios-9, cn_ios-10, cn_channel-0, cn_channel-1, cn_channel-2, cn_channel-3, en-0, en-1, en-2, en-3, en-4, jp-0, jp-1, jp-2, jp-3, jp-4, jp-5, jp-6, jp-7, jp-8, jp-9, jp-10, jp-11, jp-12, jp-13, jp-14, jp-15, jp-16, jp-17
-    Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy
-    Emulator_ControlMethod = 'minitouch'  # ADB, uiautomator2, minitouch, Hermit, MaaTouch
+    # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy
+    Emulator_ScreenshotMethod = 'auto'
+    # ADB, uiautomator2, minitouch, Hermit, MaaTouch
+    Emulator_ControlMethod = 'minitouch'
     Emulator_ScreenshotDedithering = False
     Emulator_AdbRestart = False
 
@@ -42,12 +44,13 @@ class GeneratedConfig:
     Optimization_ScreenshotInterval = 0.3
     Optimization_CombatScreenshotInterval = 1.0
     Optimization_TaskHoardingDuration = 0
-    Optimization_WhenTaskQueueEmpty = 'goto_main'  # stay_there, goto_main, close_game
+    # stay_there, goto_main, close_game
+    Optimization_WhenTaskQueueEmpty = 'goto_main'
 
     # Group `DropRecord`
     DropRecord_SaveFolder = './screenshots'
     DropRecord_AzurStatsID = None
-    DropRecord_API = 'default'  # default, cn_gz_reverse_proxy, cn_sh_reverse_proxy
+    DropRecord_API = 'default'  # default, cn_gz_reverse_proxy
     DropRecord_ResearchRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CommissionRecord = 'do_not'  # do_not, save, upload, save_and_upload
     DropRecord_CombatRecord = 'do_not'  # do_not, save
@@ -56,7 +59,8 @@ class GeneratedConfig:
     DropRecord_MeowfficerTalent = 'do_not'  # do_not, save, upload, save_and_upload
 
     # Group `Retirement`
-    Retirement_RetireMode = 'one_click_retire'  # one_click_retire, enhance, old_retire
+    # one_click_retire, enhance, old_retire
+    Retirement_RetireMode = 'one_click_retire'
 
     # Group `OneClickRetire`
     OneClickRetire_KeepLimitBreak = 'keep_limit_break'  # keep_limit_break, do_not_keep
@@ -87,7 +91,8 @@ class GeneratedConfig:
     # Group `StopCondition`
     StopCondition_RunCount = 0
     StopCondition_OilLimit = 1000
-    StopCondition_MapAchievement = 'non_stop'  # non_stop, 100_percent_clear, map_3_stars, threat_safe, threat_safe_without_3_stars
+    # non_stop, 100_percent_clear, map_3_stars, threat_safe, threat_safe_without_3_stars
+    StopCondition_MapAchievement = 'non_stop'
     StopCondition_StageIncrease = False
     StopCondition_GetNewShip = False
     StopCondition_ReachLevel = 0
@@ -95,31 +100,40 @@ class GeneratedConfig:
     # Group `Fleet`
     Fleet_Fleet1 = 1  # 1, 2, 3, 4, 5, 6
     Fleet_Fleet1Formation = 'double_line'  # line_ahead, double_line, diamond
-    Fleet_Fleet1Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    Fleet_Fleet1Mode = 'combat_auto'
     Fleet_Fleet1Step = 3  # 2, 3, 4, 5
     Fleet_Fleet2 = 2  # 0, 1, 2, 3, 4, 5, 6
     Fleet_Fleet2Formation = 'double_line'  # line_ahead, double_line, diamond
-    Fleet_Fleet2Mode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    Fleet_Fleet2Mode = 'combat_auto'
     Fleet_Fleet2Step = 2  # 2, 3, 4, 5
-    Fleet_FleetOrder = 'fleet1_mob_fleet2_boss'  # fleet1_mob_fleet2_boss, fleet1_boss_fleet2_mob, fleet1_all_fleet2_standby, fleet1_standby_fleet2_all
+    # fleet1_mob_fleet2_boss, fleet1_boss_fleet2_mob, fleet1_all_fleet2_standby, fleet1_standby_fleet2_all
+    Fleet_FleetOrder = 'fleet1_mob_fleet2_boss'
 
     # Group `Submarine`
     Submarine_Fleet = 0  # 0, 1, 2
-    Submarine_Mode = 'do_not_use'  # do_not_use, hunt_only, boss_only, hunt_and_boss, every_combat
+    # do_not_use, hunt_only, boss_only, hunt_and_boss, every_combat
+    Submarine_Mode = 'do_not_use'
     Submarine_AutoSearchMode = 'sub_standby'  # sub_standby, sub_auto_call
-    Submarine_DistanceToBoss = '2_grid_to_boss'  # to_boss_position, 1_grid_to_boss, 2_grid_to_boss, use_open_ocean_support
+    # to_boss_position, 1_grid_to_boss, 2_grid_to_boss, use_open_ocean_support
+    Submarine_DistanceToBoss = '2_grid_to_boss'
 
     # Group `Emotion`
     Emotion_Mode = 'calculate'  # calculate, ignore, calculate_ignore
     Emotion_Fleet1Value = 119
     Emotion_Fleet1Record = datetime.datetime(2023, 1, 1, 0, 0)
-    Emotion_Fleet1Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
-    Emotion_Fleet1Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
+    # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
+    Emotion_Fleet1Control = 'prevent_yellow_face'
+    # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
+    Emotion_Fleet1Recover = 'not_in_dormitory'
     Emotion_Fleet1Oath = False
     Emotion_Fleet2Value = 119
     Emotion_Fleet2Record = datetime.datetime(2023, 1, 1, 0, 0)
-    Emotion_Fleet2Control = 'prevent_yellow_face'  # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
-    Emotion_Fleet2Recover = 'not_in_dormitory'  # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
+    # keep_exp_bonus, prevent_green_face, prevent_yellow_face, prevent_red_face
+    Emotion_Fleet2Control = 'prevent_yellow_face'
+    # not_in_dormitory, dormitory_floor_1, dormitory_floor_2
+    Emotion_Fleet2Recover = 'not_in_dormitory'
     Emotion_Fleet2Oath = False
 
     # Group `HpControl`
@@ -133,7 +147,8 @@ class GeneratedConfig:
     HpControl_LowHpRetreatThreshold = 0.3
 
     # Group `EnemyPriority`
-    EnemyPriority_EnemyScaleBalanceWeight = 'default_mode'  # default_mode, S3_enemy_first, S1_enemy_first
+    # default_mode, S3_enemy_first, S1_enemy_first
+    EnemyPriority_EnemyScaleBalanceWeight = 'default_mode'
 
     # Group `C11AffinityFarming`
     C11AffinityFarming_RunCount = 32
@@ -188,7 +203,8 @@ class GeneratedConfig:
 
     # Group `Tactical`
     Tactical_TacticalFilter = 'SameT4 > SameT3 > SameT2 > SameT1\n> BlueT2 > YellowT2 > RedT2\n> BlueT3 > YellowT3 > RedT3\n> BlueT4 > YellowT4 > RedT4\n> BlueT1 > YellowT1 > RedT1\n> first'
-    Tactical_RapidTrainingSlot = 'do_not_use'  # do_not_use, slot_1, slot_2, slot_3, slot_4
+    # do_not_use, slot_1, slot_2, slot_3, slot_4
+    Tactical_RapidTrainingSlot = 'do_not_use'
 
     # Group `ControlExpOverflow`
     ControlExpOverflow_Enable = True
@@ -202,9 +218,12 @@ class GeneratedConfig:
     AddNewStudent_Favorite = True
 
     # Group `Research`
-    Research_UseCube = 'only_05_hour'  # always_use, only_05_hour, only_no_project, do_not_use
-    Research_UseCoin = 'always_use'  # always_use, only_05_hour, only_no_project, do_not_use
-    Research_UsePart = 'always_use'  # always_use, only_05_hour, only_no_project, do_not_use
+    # always_use, only_05_hour, only_no_project, do_not_use
+    Research_UseCube = 'only_05_hour'
+    # always_use, only_05_hour, only_no_project, do_not_use
+    Research_UseCoin = 'always_use'
+    # always_use, only_05_hour, only_no_project, do_not_use
+    Research_UsePart = 'always_use'
     Research_AllowDelay = True
     Research_PresetFilter = 'series_5_blueprint_152'  # custom, series_5_blueprint_152, series_5_blueprint_only, series_5_152_only, series_4_blueprint_tenrai, series_4_blueprint_only, series_4_tenrai_only, series_3_blueprint_234, series_3_blueprint_only, series_3_234_only, series_2_than_3_457_234, series_2_blueprint_457, series_2_blueprint_only, series_2_457_only
     Research_CustomFilter = 'S5-DR0.5 > S5-PRY0.5 > S5-H0.5 > S5-Q0.5 > S5-DR2.5 > 0.5 > S5-G1.5\n> S5-Q1 > S5-DR5 > S5-DR8 > S5-G4 > S5-PRY2.5 > 1 > S5-Q2 > reset\n> S5-G2.5 > S5-PRY5 > S5-PRY8 > 1.5 > 2 > S5-Q4 > 2.5 > 3\n> Q4 > G4 > 4 > 5 > S5-C6 > C6 > 6 > S5-C8 > 8\n> S5-C12 > 12'
@@ -337,7 +356,8 @@ class GeneratedConfig:
 
     # Group `Exercise`
     Exercise_DelayUntilHoursBeforeNextUpdate = 12  # 1, 2, 3, 4, 5, 12
-    Exercise_OpponentChooseMode = 'max_exp'  # max_exp, easiest, leftmost, easiest_else_exp
+    # max_exp, easiest, leftmost, easiest_else_exp
+    Exercise_OpponentChooseMode = 'max_exp'
     Exercise_OpponentTrial = 1
     Exercise_ExercisePreserve = 0
     Exercise_EmptyOnceOnSecondFriday = False
@@ -371,7 +391,8 @@ class GeneratedConfig:
 
     # Group `OpsiFleet`
     OpsiFleet_Fleet = 1  # 1, 2, 3, 4
-    OpsiFleet_FleetMode = 'combat_auto'  # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    # combat_auto, combat_manual, stand_still_in_the_middle, hide_in_bottom_left
+    OpsiFleet_FleetMode = 'combat_auto'
     OpsiFleet_Submarine = False
 
     # Group `OpsiExplore`
@@ -419,7 +440,8 @@ class GeneratedConfig:
     OpsiDaemon_SelectEnemy = True
 
     # Group `Benchmark`
-    Benchmark_DeviceType = 'emulator'  # emulator, emulator_android_12, plone_cloud_with_adb, phone_cloud_without_adb, android_phone, android_phone_12, android_phone_vmos
+    # emulator, emulator_android_12, plone_cloud_with_adb, phone_cloud_without_adb, android_phone, android_phone_12, android_phone_vmos
+    Benchmark_DeviceType = 'emulator'
     Benchmark_TestScene = 'screenshot_click'  # screenshot_click, screenshot, click
 
     # Group `AzurLaneUncensored`
@@ -438,7 +460,8 @@ class GeneratedConfig:
     GGHandler_AutoRestartGG = False
     GGHandler_RestartEverytime = True
     GGHandler_GGMultiplyingFactor = 200
-    GGHandler_DisabledTask = 'disable_all_dangerous_task'  # disable_all_dangerous_task, disable_guild_and_dangerous, disable_exercise, enable_all
+    # disable_all_dangerous_task, disable_guild_and_dangerous, disable_exercise, enable_all
+    GGHandler_DisabledTask = 'disable_all_dangerous_task'
 
     # Group `PowerLimit`
     PowerLimit_Exercise = 16500
